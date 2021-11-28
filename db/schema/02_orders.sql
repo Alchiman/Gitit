@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS orders CASCADE;
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  oreder_id  INTEGER REFERENCES users (id) ON DELETE CASCADE,
+  order_number INTEGER NOT NULL,
+  status VARCHAR(225) NOT NULL,
+  date_created TIMESTAMP
+  date_finished TIMESTAMP,
+);
