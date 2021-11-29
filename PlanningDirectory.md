@@ -33,3 +33,45 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 - As logged in restaurant, I want to see the order history of my customers, because I want to know the analytics for planning purposes.
 - As logged in restaurant, I want to be able to see total pending orders ordered by time ordered, so I know which to prioritize.
 - As logged in restaurant, I would like to be able to fulfill my order (button) and then notify the customer that the food is ready, because I want them to pick up the food.
+
+## Routes
+GET '/'
+- Redirects to user menu if user, to orders if admin
+- Redirects to active orders information if user has an active order
+
+User and Admin Profiles
+GET /user/profile -> to edit info
+POST /user/profile -> change info in database
+GET /admin/profile
+POST /admin/profile
+
+USERS menu page
+POST '/user/order' -> POST entire order into database, sets order status to pending, and rerenders the page with active order & history. Text message sends to Admin
+POST '/user/order/cancel'
+POST 'user/order/cancel' set status of order in database to canceled, append order to history, DELAYED redirect to home
+ALSO sends text message to restaurant about cancelled order.
+
+
+<!-- IF user goes to home and adds a new menu item while there is still an active order then goes to order page
+  => New order form (Add another order? <--text>) above active order & history -->
+
+**How placing order works**
+If an order has been requested by the user, then the order will be appended to the end of the **Pending** orders list.
+Once an order is accepted, it will be moved to the bottom of the **Accepted** order list.
+
+ADMINS page
+If a customer places order, their orders page re-renders with the order to accept or reject
+
+GET '/' - redirect to /orders
+GET '/admin/orders' - show list of orders
+POST 'admin/order/accept' - status of order in database changed to accepted, sends text message, appends order to accepted order list 
+POST 'admin/order/reject' - status of order in database changed to rejected, send text message, append order to history 
+POST 'admin/order/fulfill' - status of order in database changed to fulfilled, send text message, append order to history
+
+GET 'admin/history' - shows history of orders
+
+GET 'admin/menus' - Shows list of menu items and buttons to create/edit/delete menu items.
+
+POST 'admin/menus/create' - Add menu item to database, create card element and append to HTML then refetch
+POST 'admin/menus/edit' - Update menu item in database, update card element in HTML then refetch
+POST 'admin/menus/delete' - Remove menu item in database, refetch card elements in HTML
