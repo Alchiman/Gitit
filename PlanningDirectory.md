@@ -75,3 +75,48 @@ GET 'admin/menus' - Shows list of menu items and buttons to create/edit/delete m
 POST 'admin/menus/create' - Add menu item to database, create card element and append to HTML then refetch
 POST 'admin/menus/edit' - Update menu item in database, update card element in HTML then refetch
 POST 'admin/menus/delete' - Remove menu item in database, refetch card elements in HTML
+
+## QUERIES 
+- get user information (name, email, phone, isAdmin)
+  - for rendering profile page
+  - navbar user info
+  - check if admin or not to render correct page
+
+- query for updating user information
+
+- query for creating new user (insert)
+  - make sure all columns are filled 
+
+- insert query for placing order: placeOrder()
+  - insert order_master
+  - insert order_line_items (with quantity) and give order id to it
+
+- get (select) order_master and update restaurant's order page: getNewOrder()
+
+- get menuItems (name, price, description, img, tag)
+
+- get all orders associated with user (select orders where user id = the user)
+ - with the order that has the status accepted on the top of the list 
+ - orders under accepted list is sorted by newest order on top 
+
+admin queries
+
+  - query for creating new items (insert)
+  - query for updating items (alter)
+  - query for deleting items (isActive / delete)
+  - query for getting all accepted/pending orders for the active list (WHERE isAdmin = true)
+  - query for all fulfilled/rejected orders (for the history list) (WHERE isAdmin = true)
+  - query for updating the order status (alter)
+    - change pending to accepted
+    - change accepted to fulfilled
+    - change pending to rejected
+    - change accepted to cancelled (when user cancelled)
+
+text message queries
+    - get user phone number to make text message (WHERE user.id = user of order)
+    - textUser()
+      - get phone number with query
+      - call api to text user
+      - get orders and use the info in that to send text msg
+
+
