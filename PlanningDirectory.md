@@ -101,14 +101,14 @@ POST 'admin/menus/delete' - Remove menu item in database, refetch card elements 
 
 admin queries
 
-  - query for creating new items (insert) luis
-  - query for updating items (alter) luis
-  - query for deleting items (isActive / delete) luis
+  - query for creating new items (insert) luis (done)
+  - query for updating items (alter) luis (done)
+  - query for deleting items (isActive / delete) luis (done)
   - query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza  
   - query for all fulfilled/rejected orders (for the history list) (WHERE isAdmin = true) Alireza
   - query for updating the order status (alter) Alireza
-    - change pending to accepted luis
-    - change accepted to fulfilled luis
+    - change pending to accepted luis (done)
+    - change accepted to fulfilled luis (done)
     - change pending to rejected Alireza
     - change accepted to cancelled (when user cancelled) Alireza
 
