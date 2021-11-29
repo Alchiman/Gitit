@@ -1,7 +1,7 @@
-Midterm Project
-=========
+# Midterm Project
 
 ## Gitit - Food Pick-up Ordering
+
 A food ordering experience for a single restaurant. Hungry clients of this fictitious restaurant can visit its website, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
 
 The restaurant and client both need to be notified since this app serves as an intermediary.
@@ -13,6 +13,7 @@ You can use a modern telecomm API service such as Twilio to implement SMS commun
 For inspiration check out how Ritual works, but keep in mind that's implemented as a native app and serves more than one restaurant.
 
 ## User Stories
+
 - As a logged in customer, I want to select one or more dishes and place an order for pick up, because I'm hungry.
 - As a logged in customer, I want to be notified when my order is ready for pick up, because I don't want to be waiting forever.
 - As a logged in customer, i want to be notified by text message, because I might miss other kinds of notifications.
@@ -35,7 +36,9 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 - As logged in restaurant, I would like to be able to fulfill my order (button) and then notify the customer that the food is ready, because I want them to pick up the food.
 
 ## Routes
+
 GET '/'
+
 - Redirects to user menu if user, to orders if admin
 - Redirects to active orders information if user has an active order
 
@@ -51,7 +54,6 @@ POST '/user/order/cancel'
 POST 'user/order/cancel' set status of order in database to canceled, append order to history, DELAYED redirect to home
 ALSO sends text message to restaurant about cancelled order.
 
-
 <!-- IF user goes to home and adds a new menu item while there is still an active order then goes to order page
   => New order form (Add another order? <--text>) above active order & history -->
 
@@ -64,8 +66,8 @@ If a customer places order, their orders page re-renders with the order to accep
 
 GET '/' - redirect to /orders
 GET '/admin/orders' - show list of orders
-POST 'admin/order/accept' - status of order in database changed to accepted, sends text message, appends order to accepted order list 
-POST 'admin/order/reject' - status of order in database changed to rejected, send text message, append order to history 
+POST 'admin/order/accept' - status of order in database changed to accepted, sends text message, appends order to accepted order list
+POST 'admin/order/reject' - status of order in database changed to rejected, send text message, append order to history
 POST 'admin/order/fulfill' - status of order in database changed to fulfilled, send text message, append order to history
 
 GET 'admin/history' - shows history of orders
@@ -76,8 +78,10 @@ POST 'admin/menus/create' - Add menu item to database, create card element and a
 POST 'admin/menus/edit' - Update menu item in database, update card element in HTML then refetch
 POST 'admin/menus/delete' - Remove menu item in database, refetch card elements in HTML
 
-## QUERIES 
+## QUERIES
+
 - get user information (name, email, phone, isAdmin)
+
   - for rendering profile page
   - navbar user info
   - check if admin or not to render correct page
@@ -85,9 +89,11 @@ POST 'admin/menus/delete' - Remove menu item in database, refetch card elements 
 - query for updating user information
 
 - query for creating new user (insert)
-  - make sure all columns are filled 
+
+  - make sure all columns are filled
 
 - insert query for placing order: placeOrder()
+
   - insert order_master
   - insert order_line_items (with quantity) and give order id to it
 
@@ -96,27 +102,35 @@ POST 'admin/menus/delete' - Remove menu item in database, refetch card elements 
 - get menuItems (name, price, description, img, tag)
 
 - get all orders associated with user (select orders where user id = the user)
- - with the order that has the status accepted on the top of the list 
- - orders under accepted list is sorted by newest order on top 
+- with the order that has the status accepted on the top of the list
+- orders under accepted list is sorted by newest order on top
 
 admin queries
 
-  - query for creating new items (insert) luis (done)
-  - query for updating items (alter) luis (done)
-  - query for deleting items (isActive / delete) luis (done)
-  - query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza  
-  - query for all fulfilled/rejected orders (for the history list) (WHERE isAdmin = true) Alireza
-  - query for updating the order status (alter) Alireza
-    - change pending to accepted luis (done)
-    - change accepted to fulfilled luis (done)
-    - change pending to rejected Alireza
-    - change accepted to cancelled (when user cancelled) Alireza
+- query for creating new items (insert) luis (done)
+- query for updating items (alter) luis (done)
+- query for deleting items (isActive / delete) luis (done)
+- query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza
+- query for all fulfilled/rejected orders (for the history list) (WHERE isAdmin = true) Alireza
+- query for updating the order status (alter) Alireza
+  - change pending to accepted luis (done)
+  - change accepted to fulfilled luis (done)
+  - change pending to rejected Alireza
+  - change accepted to cancelled (when user cancelled) Alireza
 
-text message queries
-    - get user phone number to make text message (WHERE user.id = user of order) Alireza 
-    - textUser()
-      - get phone number with query
-      - call api to text user
-      - get orders and use the info in that to send text msg
+text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
 
+- query for creating new items (insert) luis
+- query for updating items (alter) luis
+- query for deleting items (isActive / delete) luis
+- query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza (done)
+- query for all fulfilled/rejected/cancelled orders (for the history list) (WHERE isAdmin = true) Alireza (done)
+- query for updating the order status (update)
+  - change pending to accepted luis
+  - change accepted to fulfilled luis
+  - change pending to rejected Alireza (done)
+  - change accepted/pending to cancelled (when user cancelled) Alireza (done)
+- insert in line_items with quantity and item
+  -insert order
 
+text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
