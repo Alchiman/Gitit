@@ -1,0 +1,52 @@
+@import 'colors';
+@import 'typography';
+@import 'media-queries';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5em;
+
+  &--fixed {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    min-height: 7.5vh;
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  &--dark {
+    background-color: $primary;
+    color: $text-dark;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    position:relative;
+    color: $light;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 10px;
+    letter-spacing: 0.5px;;
+    font-weight: 600;
+    font-size: $fs-400;
+    cursor: pointer;
+
+    @include landscape {
+      font-size: $fs-600;
+    }
+
+    &:hover {
+      color: $orangered;
+      transition: all 0.3s ease;
+      }
+  }
+
+  &__logo {
+    max-width: 5rem;
+    padding: 0;
+  }
+}

@@ -1,6 +1,17 @@
 // See: https://sass-lang.com/
+@import 'typography';
+@import 'colors';
 
 body,
-html {
+html,
+p,
+h1,
+h2,
+h3 {
   margin: 0;
+}
+
+body {
+  font-size: $fs-400;
+  background-color: $background;
 }

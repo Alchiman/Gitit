@@ -1,0 +1,97 @@
+@import 'colors';
+@import 'typography';
+@import 'media-queries';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 13px 2px rgb(0 0 0 / 21%);
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+
+  text-align: center;
+  transition: 0.2s ease;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  p {
+    &:first-of-type {
+      font-weight: 600;
+    }
+    margin: 0;
+  }
+
+  &__image {
+    width: 100%;
+    min-height: 10rem;
+    border-radius: 10px 10px 0 0;
+
+    background-image: url('../images/sushi-menu-item.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 3rem;
+  }
+
+  &__price {
+    width: 3rem;
+    height: 3rem;
+    background: #fff;
+    box-shadow: 0 4px 17px -3px rgb(0 0 0 / 25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 8.5rem;
+    border-radius: 50%;
+
+    left: 45%;
+
+    @include landscape {
+      left: 42%;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+
+    span {
+      margin: auto 1rem;
+      font-size: $fs-400;
+      font-weight: 600;
+    }
+
+    button {
+        font-size: $fs-400;
+        background: $primary;
+        padding: .5em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        text-decoration: none;
+        font-weight: 600;
+        color: $light;
+        transition: 0.2s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+    }
+  }
+}
