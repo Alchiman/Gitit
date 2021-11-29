@@ -8,10 +8,18 @@ $(() => {
 
   window.views_manager.render = function(component) {
     $menuList.detach();
+    $orderSummary.detach();
+    $profile.detach();
 
     switch (component) {
       case 'menuList':
         $menuList.appendTo($main);
+        break;
+      case 'orderSummary':
+        $orderSummary.appendTo($main);
+        break;
+      case 'profile':
+        $profile.appendTo($main);
         break;
       case 'error': {
         const $error = $(`<p>${arguments[1]}</p>`);
