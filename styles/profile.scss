@@ -1,0 +1,58 @@
+//TEMPORARY STYLES, WILL UPDATE AND MODULARIZE
+.auth-form-outer{
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #5680e9;
+  border-radius: .25rem;
+  background-color: #fefefe;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+  overflow: hidden;
+  z-index: 200;
+}
+
+.header {
+  font-size: 2rem;
+  border-bottom: 1px solid #f0f0f0;
+	background-color: #365fc7;
+	padding: 20px 40px;
+  color: #fefefe;
+  text-align: center;
+}
+
+.form {
+  padding: 30px 40px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1px;
+	padding-bottom: 5px;
+	position: relative;
+}
+
+.form-group input:focus {
+  outline: 0;
+	border-color: #365fc7;
+}
+
+.form button {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+	border-radius: 4px;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  color: #fff;
+  background-color: #365fc7;
+	border: 2px solid #365fc7;
+}
