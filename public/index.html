@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/card.css" type="text/css" />
+
+  <!-- App JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/menuItemsList.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar--dark navbar--fixed">
+    <img class="navbar__logo" src="./images/gitit-logo.png" alt="logo">
+    <span class="navbar__item">History</span>
+    <span class="navbar__item">Home</span>
+    <span class="navbar__item">
+      <i class="fas fa-cart-arrow-down"></i>
+      Order
+      <p></p>
+    </span>
+  </nav>
+  <!-- Main Content -->
+  <main>
+    <!-- Menu Item Card -->
+    <section id="orders" class="container container--orders">
+      <h1>Order Summary</h1>
+      <div>
+        <table class="table--items">
+          <tr>
+            <td>
+              <p>Item</p>
+            </td>
+            <td>
+              <p>Quantity</p>
+            </td>
+            <td>
+              <p>Price</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Alaska Roll</p>
+            </td>
+            <td>
+              <select>
+                <option value="">0</option>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option selected="selected" value="">3</option>
+                <option value="">4</option>
+                <option value="">5</option>
+              </select>
+            </td>
+            <td>
+              <p>$22.00</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Alaska Roll</p>
+            </td>
+            <td>
+              <select>
+                <option value="">0</option>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+                <option selected="selected" value="">5</option>
+              </select>
+            </td>
+            <td>
+              <p>$22.00</p>
+            </td>
+          </tr>
+        </table>
+        <table class="table--total">
+          <tr>
+            <td>
+              <p>Total</p>
+            </td>
+            <td>
+              <p>$66.00</p>
+            </td>
+          </tr>
+        </table>
+        <button>
+          Place Order
+        </button>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <p>Copyright © 2021 | Gitit | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
