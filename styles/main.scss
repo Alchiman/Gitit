@@ -76,3 +76,21 @@ main {
 .js-active {
   border-bottom: .2rem solid red;
 }
+
+.total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.price {
+  display: flex;
+
+  p {
+    margin-right: 1rem;
+  }
+}
+
+.redirect {
+  background-color: goldenrod;
+}
