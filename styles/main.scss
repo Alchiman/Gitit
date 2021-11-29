@@ -1,17 +1,78 @@
-body {
+@import 'colors';
+@import 'typography';
+@import 'media-queries';
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  margin: auto;
+  width: 90%;
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+  &--orders {
+    flex-direction: column;
+    width: 100%;
+    table {
+      width: 100%;
+      tr {
+        &:first-of-type {
+          font-weight: 600;
+        }
+
+        td {
+          margin: 0;
+          padding: 1px 20px;
+
+          td:nth-child(1) {
+            text-align: left;
+         }
+
+         td:nth-child(2) {
+            text-align: right;
+         }
+        }
+      }
+    }
+  }
+
+  &--card {
+    flex-wrap: wrap;
+    gap: 1em;
+
+    & > * {
+
+    flex-basis: 100%; //1 item per row
+
+    @include landscape{
+      flex: 1 1 47%; // 2 items per row
+    }
+
+    @include tablet {
+      flex: 1 1 30%; // 3 items per row
+    }
+
+    @include desktopSmall {
+      flex: 1 1 22%; // 4 items per row
+    }
+    }
+  }
+}
+
+#footer {
+  margin-top: auto;
+  display: flex;
+  p {
+      text-align: center;
+  }
+}
+
+.js-active {
+  border-bottom: .2rem solid red;
 }
