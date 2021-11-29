@@ -10,12 +10,6 @@ $(document).ready(function() {
   $home.addClass('js-active');
   let active = $home;
 
-  // const renderMenuItems = () => {
-  //   const $menuItems = createMenuItem();
-
-  //   $("main").append($menuItems);
-  // };
-
   //increment the cart counter on click
   $(".card__footer button").on("click", function() {
     itemCount++;
