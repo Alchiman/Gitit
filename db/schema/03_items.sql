@@ -6,5 +6,5 @@ CREATE TABLE items (
   price INTEGER NOT NULL,
   description TEXT,
   img_url VARCHAR(255) NOT NULL,
-  tag VARCHAR(255) NOT NULL,
+  tag VARCHAR(255) NOT NULL
 );

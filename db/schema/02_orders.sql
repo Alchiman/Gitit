@@ -5,6 +5,6 @@ CREATE TABLE orders (
   user_id  INTEGER REFERENCES users(id) ON DELETE CASCADE,
   order_number INTEGER NOT NULL,
   status VARCHAR(225) NOT NULL,
-  date_created TIMESTAMP
-  date_finished TIMESTAMP,
+  date_created TIMESTAMP,
+  date_finished TIMESTAMP
 );

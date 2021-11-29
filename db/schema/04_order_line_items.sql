@@ -3,5 +3,6 @@ DROP TABLE IF EXISTS order_line_items CASCADE;
 CREATE TABLE order_line_items (
   id SERIAL PRIMARY KEY NOT NULL,
   item_id  INTEGER REFERENCES items (id) ON DELETE CASCADE,
-  order_id  INTEGER REFERENCES orders (id) ON DELETE CASCADE
+  order_id  INTEGER REFERENCES orders (id) ON DELETE CASCADE,
+  quantity INTEGER NOT NULL
 );
