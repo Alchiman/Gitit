@@ -101,19 +101,19 @@ POST 'admin/menus/delete' - Remove menu item in database, refetch card elements 
 
 admin queries
 
-  - query for creating new items (insert)
-  - query for updating items (alter)
-  - query for deleting items (isActive / delete)
-  - query for getting all accepted/pending orders for the active list (WHERE isAdmin = true)
-  - query for all fulfilled/rejected orders (for the history list) (WHERE isAdmin = true)
-  - query for updating the order status (alter)
-    - change pending to accepted
-    - change accepted to fulfilled
-    - change pending to rejected
-    - change accepted to cancelled (when user cancelled)
+  - query for creating new items (insert) luis
+  - query for updating items (alter) luis
+  - query for deleting items (isActive / delete) luis
+  - query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza  
+  - query for all fulfilled/rejected orders (for the history list) (WHERE isAdmin = true) Alireza
+  - query for updating the order status (alter) Alireza
+    - change pending to accepted luis
+    - change accepted to fulfilled luis
+    - change pending to rejected Alireza
+    - change accepted to cancelled (when user cancelled) Alireza
 
 text message queries
-    - get user phone number to make text message (WHERE user.id = user of order)
+    - get user phone number to make text message (WHERE user.id = user of order) Alireza 
     - textUser()
       - get phone number with query
       - call api to text user
