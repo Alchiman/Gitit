@@ -131,8 +131,9 @@ exports.createOrder = createOrder;
 
 const getOrder = function(order_no) {
   return db
-    .query(``)
+    .query(`SELECT * FROM orders WHERE order_number = $1;`, [order_no])
     .then(result => {
+      console.log(result.rows);
       return result.rows[0];
     })
     .catch(err => console.log(err.message));

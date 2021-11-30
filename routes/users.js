@@ -10,7 +10,7 @@ const router = express.Router();
 
 module.exports = db => {
   router.get("/", (req, res) => {
-    db.fulfillOrder(3)
+    db.getOrder(3)
       .then(data => {
         const users = data.rows;
         res.json({ users });
