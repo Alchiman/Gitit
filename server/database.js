@@ -48,8 +48,9 @@ exports.changeStatus = changeStatus;
 
 const getActiveOrders = function() {
   return db
-    .query(``,)
+    .query(`SELECT * FROM orders WHERE status = 'accepted';`,)
     .then(result => {
+      
       return result.rows[0];
     })
     .catch(err => console.log(err.message));
@@ -58,8 +59,9 @@ exports.getActiveOrders = getActiveOrders;
 
 const getOrderHistory = function() {
   return db
-    .query(``,)
+    .query(`SELECT * FROM orders WHERE status = 'fulfilled' or status = 'rejected';`,)
     .then(result => {
+      
       return result.rows[0];
     })
     .catch(err => console.log(err.message));
@@ -69,8 +71,9 @@ exports.getOrderHistory = getOrderHistory;
 
 const getPhoneNumber = function(order_no) {
   return db
-    .query(``,)
+    .query(` SELECT users.name, users.phone , orders.order_number FROM orders JOIN users ON orders.user_id = users.id WHERE orders.order_number = ${order_no};`,)
     .then(result => {
+     
       return result.rows[0];
     })
     .catch(err => console.log(err.message));
@@ -116,3 +119,13 @@ const updateUserInfo = function(name, email, phone) {
     .catch(err => console.log(err.message));
 };
 exports.updateUserInfo = updateUserInfo;
+
+const itemIdByName = function(name) {
+  return db
+    .query(`SELECT id  FROM items WHERE name = ${name};`,)
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(err => console.log(err.message));
+};
+exports.updateUserInfo = itemIdByName;
