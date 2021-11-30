@@ -10,7 +10,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    db.createOrder(1, 6)
       .then(data => {
         const users = data.rows;
         res.json({ users });

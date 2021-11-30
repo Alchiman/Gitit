@@ -105,15 +105,55 @@ const getPhoneNumber = function(order_no) {
 };
 exports.getPhoneNumber = getPhoneNumber;
 
-const createOrder = function(itemList) {
+const getOrderCount = function() {
   return db
-    .query(``,)
+    .query(
+      `SELECT COUNT(*) FROM orders;`)
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(err => console.log(err.message));
+};
+exports.getOrderCount = getOrderCount;
+
+const createOrder = function(user_id, order_count) {
+  const date = new Date();
+  let order_no = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+    .toISOString()
+    .split("T")[0];
+  order_no = order_no.replace(/-/g, "");
+  order_count++;
+  order_no += order_count;
+  return db
+    .query(
+      `INSERT INTO orders(user_id, order_number, status, date_created)
+       VALUES($1, $2, 'PENDING', NOW())
+       RETURNING *;`, [user_id, order_no])
     .then(result => {
       return result.rows[0];
     })
     .catch(err => console.log(err.message));
 };
 exports.createOrder = createOrder;
+
+const addOrderLineItems = function(order_id, itemList) {
+  let queryString = `INSERT INTO order_line_items (item_id, order_id, quantity) VALUES`;
+  const numberOfItems = Object.keys(itemList).length * 2;
+  let queryParams = Object.entries(itemList).flat().map((vals) => parseInt(vals));
+  for (let i = 1; i <= numberOfItems; i += 2) {
+    queryString += ` ($${i}, ${order_id}, $${i + 1}),`;
+  }
+  queryString = queryString.slice(0, -1);
+  queryString += ` RETURNING *;`;
+
+  return db
+    .query(queryString, queryParams)
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(err => console.log(err.message));
+};
+exports.addOrderLineItems = addOrderLineItems;
 
 const getOrder = function(order_no) {
   return db
