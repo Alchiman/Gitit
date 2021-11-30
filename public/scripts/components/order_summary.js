@@ -76,8 +76,47 @@ $(() => {
     </div>
   </section>
   `);
-  $("#orders-button").on("click", function() {
-    console.log("clicked place holder!");
-  });
   window.$orderSummary = $orderSummary;
+
+  window.orderSummary = {};
+  window.orderSummary.cart = {};
+  const addToCart = (itemName) => {
+    if (orderSummary.cart[itemName]) {
+      orderSummary.cart[itemName] = orderSummary.cart[itemName] + 1;
+    } else {
+      orderSummary.cart[itemName] = 1;
+    }
+  };
+
+  orderSummary.addToCart = addToCart;
+
+  const createItemReceipt = (name, price, quantity) => {
+    const $itemReceipt = $(`
+      <tr>
+      <td>
+        <p>Alaska Roll</p>
+      </td>
+      <td>
+        <select>
+          <option value="">0</option>
+          <option value="">1</option>
+          <option value="">2</option>
+          <option selected="selected" value="">3</option>
+          <option value="">4</option>
+          <option value="">5</option>
+        </select>
+      </td>
+      <td>
+        <p>$22.00</p>
+      </td>
+    </tr>
+    `);
+  };
+
+  // const clearMenu = () => {
+  //   $menuList.empty();
+  // };
+
+  // window.menuItems.clearMenu = clearMenu;
+
 });
