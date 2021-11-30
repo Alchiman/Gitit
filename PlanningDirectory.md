@@ -118,4 +118,21 @@ admin queries
   - change pending to rejected Alireza
   - change accepted to cancelled (when user cancelled) Alireza
 
-text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
+text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text
+
+## Query Functions
+
+- addNewItem(name,price,description,img_url,tag OR params_obj)
+- updateItem(name, price, description, img_url, tag) // default values in the form
+- deleteItem(name)
+- changeStatus(status, order_no) // handles all status changes
+- getActiveOrders()
+- getOrderHistory()
+- getPhoneNumber(order_no)
+- createOrder(itemList) example itemList Object: { alaskaRoll : 3}
+  - create order number with new date() + order_id
+  - use two queries here: insert order and then insert order line items
+- **getOrder(order_no)**
+  - gets the order and all order_line_items related to order_no
+- **getUserInfo() - returns name, email, phone, is_admin**
+- **updateUserInfo(name, email, phone)**
