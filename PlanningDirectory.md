@@ -59,7 +59,7 @@ ORDER SUMMARY if there's nothing in cart, do not render
 ACTIVE ORDER  if theres no active order, do not render
 HISTORY always render
 GET '/user/orders' - get userOrderHistory(user_id), getPrices({item_id: 3, sushi combo a: 4}) <- stretch >
-POST '/user/orders' -> calls create order, calls addLineItems, and rerenders the page with active orders & history. Text message sends to Admin. 
+POST '/user/orders' -> calls createOrder(), calls addLineItems(), and rerenders the page with active orders & history. Text message sends to Admin. 
 POST '/user/orders/cancel' - cancelOrder(order_no), sends text msg to user and restaurant, call userGetOrderHistory to rerender the cancelled order into history, then redirect to menu in 2 seconds.
 
 **How placing order works**
@@ -70,21 +70,21 @@ ADMINS page
 If a customer places order, their orders page re-renders with the order to accept or reject
 
 GET '/' - redirect to /admin/orders
-GET '/admin/orders' - show list of orders - if no orders, show "no active orders, check history"
-                    - setInterval(3 seconds for demo) to check for getPendingOrders Orders then render it
+GET '/admin/orders' - getOrders() show list of orders - if no orders, show "no active orders, check history"
+                    - setInterval(3 seconds for demo) to check for getPendingOrders() Orders then render it
                   accept(frontend) - pop up modal, restaurant enters estimated time then presses accept
-POST 'admin/order/accept' - call acceptOrReject('accept', order_no), send text message with time, rerender order with button changed to fulfilled and take away reject button
+POST 'admin/orders/accept' - call acceptOrReject('accept', order_no), send text message with time, rerender order with button changed to fulfilled and take away reject button
                   reject(frontend) - pop up modal, reason for rejecting, then press reject
-POST 'admin/order/reject' - call acceptOrReject(reject, order_no), send text message with reason, show "your order has been rejected, you will be redirected in 3 seconds" then re-render orders page
+POST 'admin/orders/reject' - call acceptOrReject(reject, order_no), send text message with reason, show "your order has been rejected, you will be redirected in 3 seconds" then re-render orders page
                   fulfill(frontend) - show pop up modal, show undo button and redirect in 3 seconsd
                                     - the message in box should be 'The customer will be notified in 3 seconds'
                                     - if they press undo button, do not call post method, rerender orders page
-POST 'admin/order/fulfill' - after 3 seconds from frontend, call fulfillOrder(order_no), send text message
+POST 'admin/orders/fulfill' - after 3 seconds from frontend, call fulfillOrder(order_no), send text message
 
 GET 'admin/history' - call getAdminHistory() (change getOrderHistory to getAdminHistory)
                     - render it all 
 
-GET 'admin/menus' - call getAllItems()
+GET 'admin/menus' - call getAllItems() return that object
                   - render admin menu page with create/edit/delete buttons
 
 POST 'admin/menus/create' - addNewItem(name, price, description, img_url)
