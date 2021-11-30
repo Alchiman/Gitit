@@ -119,18 +119,3 @@ admin queries
   - change accepted to cancelled (when user cancelled) Alireza
 
 text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
-
-- query for creating new items (insert) luis
-- query for updating items (alter) luis
-- query for deleting items (isActive / delete) luis
-- query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza (done)
-- query for all fulfilled/rejected/cancelled orders (for the history list) (WHERE isAdmin = true) Alireza (done)
-- query for updating the order status (update)
-  - change pending to accepted luis
-  - change accepted to fulfilled luis
-  - change pending to rejected Alireza (done)
-  - change accepted/pending to cancelled (when user cancelled) Alireza (done)
-- insert in line_items with quantity and item
-  -insert order
-
-text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
