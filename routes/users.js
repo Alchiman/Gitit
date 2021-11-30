@@ -10,7 +10,11 @@ const router = express.Router();
 
 module.exports = db => {
   router.get("/", (req, res) => {
+<<<<<<< HEAD
     db.getOrder(3)
+=======
+    db.createOrder(1, 6)
+>>>>>>> feature/query-functions-ivan
       .then(data => {
         const users = data.rows;
         res.json({ users });
