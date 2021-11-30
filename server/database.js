@@ -113,7 +113,7 @@ exports.getOrderHistory = getOrderHistory;
 
 const getPhoneNumber = function(order_no) {
   return db
-    .query(` SELECT users.name, users.phone , orders.order_number FROM orders JOIN users ON orders.user_id = users.id WHERE orders.order_number = ${order_no};`,)
+    .query(` SELECT users.name, users.phone , orders.order_number FROM orders JOIN users ON orders.user_id = users.id WHERE orders.order_number = $1;`,[order_no])
     .then(result => {
      
       return result.rows[0];
@@ -165,7 +165,7 @@ exports.updateUserInfo = updateUserInfo;
 
 const itemIdByName = function(name) {
   return db
-    .query(`SELECT id  FROM items WHERE name = ${name};`,)
+    .query(`SELECT id  FROM items WHERE name = $1;`, [name])
     .then(result => {
       return result.rows[0];
     })
