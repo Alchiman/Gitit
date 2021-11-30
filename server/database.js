@@ -171,8 +171,8 @@ const createOrder = function(user_id, order_count) {
   order_no += order_count;
   return db
     .query(
-      `INSERT INTO orders(user_id, order_number, status, date_created)
-       VALUES($1, $2, 'PENDING', NOW())
+      `INSERT INTO orders(user_id, order_number, date_created)
+       VALUES($1, $2, NOW())
        RETURNING *;`, [user_id, order_no])
     .then(result => {
       return result.rows[0];
