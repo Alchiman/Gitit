@@ -90,11 +90,7 @@ exports.fulfillOrder = fulfillOrder;
 
 const getActiveOrders = function() {
   return db
-<<<<<<< HEAD
     .query(`SELECT * FROM orders WHERE status = 'accepted';`,)
-=======
-    .query(``)
->>>>>>> 01a9cee5ca7a2d46f3edad01ba2fc5dda2df5d34
     .then(result => {
       
       return result.rows[0];
@@ -105,11 +101,7 @@ exports.getActiveOrders = getActiveOrders;
 
 const getOrderHistory = function() {
   return db
-<<<<<<< HEAD
     .query(`SELECT * FROM orders WHERE status = 'fulfilled' or status = 'rejected';`,)
-=======
-    .query(``)
->>>>>>> 01a9cee5ca7a2d46f3edad01ba2fc5dda2df5d34
     .then(result => {
       
       return result.rows[0];
@@ -121,11 +113,7 @@ exports.getOrderHistory = getOrderHistory;
 
 const getPhoneNumber = function(order_no) {
   return db
-<<<<<<< HEAD
     .query(` SELECT users.name, users.phone , orders.order_number FROM orders JOIN users ON orders.user_id = users.id WHERE orders.order_number = ${order_no};`,)
-=======
-    .query(``)
->>>>>>> 01a9cee5ca7a2d46f3edad01ba2fc5dda2df5d34
     .then(result => {
      
       return result.rows[0];
