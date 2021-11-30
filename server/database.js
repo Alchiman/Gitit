@@ -2,7 +2,7 @@
 const { Pool } = require('pg');
 
 // PG database client/connection setup
-const dbParams = require("./lib/db.js");
+const dbParams = require("../lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
