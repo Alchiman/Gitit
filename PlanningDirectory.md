@@ -48,14 +48,19 @@ POST /user/profile -> change info in database
 GET /admin/profile
 POST /admin/profile
 
-USERS menu page
-POST '/user/order' -> POST entire order into database, sets order status to pending, and rerenders the page with active order & history. Text message sends to Admin
-POST '/user/order/cancel'
-POST 'user/order/cancel' set status of order in database to canceled, append order to history, DELAYED redirect to home
-ALSO sends text message to restaurant about cancelled order.
+GET '/' -> check isAdmin (call getUserInfo)
+GET /user/menu - shows menu
+GET /admin/menu - shows menu
+GET /user/items - gets all items
+GET /admin/items - gets all items
 
-<!-- IF user goes to home and adds a new menu item while there is still an active order then goes to order page
-  => New order form (Add another order? <--text>) above active order & history -->
+USERS menu page
+ORDER SUMMARY if there's nothing in cart, do not render
+ACTIVE ORDER  if theres no active order, do not render
+HISTORY always render
+GET '/user/orders' - get userOrderHistory(user_id), getPrices({item_id: 3, sushi combo a: 4}) <- stretch >
+POST '/user/orders' -> calls create order, calls addLineItems, and rerenders the page with active orders & history. Text message sends to Admin. 
+POST '/user/orders/cancel' - cancelOrder(order_no), sends text msg to user and restaurant, call userGetOrderHistory to rerender the cancelled order into history, then redirect to menu in 2 seconds.
 
 **How placing order works**
 If an order has been requested by the user, then the order will be appended to the end of the **Pending** orders list.
@@ -64,19 +69,30 @@ Once an order is accepted, it will be moved to the bottom of the **Accepted** or
 ADMINS page
 If a customer places order, their orders page re-renders with the order to accept or reject
 
-GET '/' - redirect to /orders
-GET '/admin/orders' - show list of orders
-POST 'admin/order/accept' - status of order in database changed to accepted, sends text message, appends order to accepted order list
-POST 'admin/order/reject' - status of order in database changed to rejected, send text message, append order to history
-POST 'admin/order/fulfill' - status of order in database changed to fulfilled, send text message, append order to history
+GET '/' - redirect to /admin/orders
+GET '/admin/orders' - show list of orders - if no orders, show "no active orders, check history"
+                    - setInterval(3 seconds for demo) to check for getPendingOrders Orders then render it
+                  accept(frontend) - pop up modal, restaurant enters estimated time then presses accept
+POST 'admin/order/accept' - call acceptOrReject('accept', order_no), send text message with time, rerender order with button changed to fulfilled and take away reject button
+                  reject(frontend) - pop up modal, reason for rejecting, then press reject
+POST 'admin/order/reject' - call acceptOrReject(reject, order_no), send text message with reason, show "your order has been rejected, you will be redirected in 3 seconds" then re-render orders page
+                  fulfill(frontend) - show pop up modal, show undo button and redirect in 3 seconsd
+                                    - the message in box should be 'The customer will be notified in 3 seconds'
+                                    - if they press undo button, do not call post method, rerender orders page
+POST 'admin/order/fulfill' - after 3 seconds from frontend, call fulfillOrder(order_no), send text message
 
-GET 'admin/history' - shows history of orders
+GET 'admin/history' - call getAdminHistory() (change getOrderHistory to getAdminHistory)
+                    - render it all 
 
-GET 'admin/menus' - Shows list of menu items and buttons to create/edit/delete menu items.
+GET 'admin/menus' - call getAllItems()
+                  - render admin menu page with create/edit/delete buttons
 
-POST 'admin/menus/create' - Add menu item to database, create card element and append to HTML then refetch
-POST 'admin/menus/edit' - Update menu item in database, update card element in HTML then refetch
-POST 'admin/menus/delete' - Remove menu item in database, refetch card elements in HTML
+POST 'admin/menus/create' - addNewItem(name, price, description, img_url)
+                          - call getAllItems() and rerender admin menu page
+POST 'admin/menus/edit' - updateItem(name, price, description, img_url, tag, originalName)
+                        - call getAllItems() and rerender admin menu page
+POST 'admin/menus/delete' - deleteItem(name)
+                          - call getAllItems() and rerender admin menu page
 
 ## QUERIES
 
