@@ -6,5 +6,5 @@ CREATE TABLE orders (
   order_number INTEGER NOT NULL,
   status VARCHAR(225) NOT NULL,
   date_created TIMESTAMP,
-  date_finished DEFAULT NULL
+  date_finished TIMESTAMP DEFAULT NULL
 );
