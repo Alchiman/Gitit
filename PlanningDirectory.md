@@ -118,19 +118,21 @@ admin queries
   - change pending to rejected Alireza
   - change accepted to cancelled (when user cancelled) Alireza
 
-text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
+text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text
 
-- query for creating new items (insert) luis
-- query for updating items (alter) luis
-- query for deleting items (isActive / delete) luis
-- query for getting all accepted/pending orders for the active list (WHERE isAdmin = true) Alireza (done)
-- query for all fulfilled/rejected/cancelled orders (for the history list) (WHERE isAdmin = true) Alireza (done)
-- query for updating the order status (update)
-  - change pending to accepted luis
-  - change accepted to fulfilled luis
-  - change pending to rejected Alireza (done)
-  - change accepted/pending to cancelled (when user cancelled) Alireza (done)
-- insert in line_items with quantity and item
-  -insert order
+## Query Functions
 
-text message queries - get user phone number to make text message (WHERE user.id = user of order) Alireza - textUser() - get phone number with query - call api to text user - get orders and use the info in that to send text msg
+- addNewItem(name,price,description,img_url,tag OR params_obj)
+- updateItem(name, price, description, img_url, tag) // default values in the form
+- deleteItem(name)
+- changeStatus(status, order_no) // handles all status changes
+- getActiveOrders()
+- getOrderHistory()
+- getPhoneNumber(order_no)
+- createOrder(itemList) example itemList Object: { alaskaRoll : 3}
+  - create order number with new date() + order_id
+  - use two queries here: insert order and then insert order line items
+- **getOrder(order_no)** 
+  - gets the order and all order_line_items related to order_no
+- **getUserInfo() - returns name, email, phone, is_admin**
+- **updateUserInfo(name, email, phone)**
