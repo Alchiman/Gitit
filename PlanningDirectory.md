@@ -132,7 +132,7 @@ text message queries - get user phone number to make text message (WHERE user.id
 - createOrder(itemList) example itemList Object: { alaskaRoll : 3}
   - create order number with new date() + order_id
   - use two queries here: insert order and then insert order line items
-- **getOrder(order_no)** 
+- **getOrder(order_no)**
   - gets the order and all order_line_items related to order_no
 - **getUserInfo() - returns name, email, phone, is_admin**
 - **updateUserInfo(name, email, phone)**
