@@ -4,7 +4,7 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id  INTEGER REFERENCES users(id) ON DELETE CASCADE,
   order_number INTEGER NOT NULL,
-  status VARCHAR(225) NOT NULL,
+  status VARCHAR(225) DEFAULT 'pending' NOT NULL,
   date_created TIMESTAMP,
   date_finished TIMESTAMP DEFAULT NULL
 );
