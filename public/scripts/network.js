@@ -85,3 +85,13 @@ function createOrder() {
     dataType: 'json'
   });
 }
+
+function logIn(id) {
+  return $.ajax({
+    method: "POST",
+    url: "/users/orders",
+    data: { id: id },
+    contentType: "application/json; charset=utf-8",
+    dataType: 'json'
+  });
+}

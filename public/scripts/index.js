@@ -19,7 +19,32 @@ $(document).ready(function() {
       $("nav p").text(itemCount);
     });
   });
-  // cancelOrder().then(function(json) {
+  // createOrder().then(function(json) {
   //   console.log(json);
   // });
+
+  $(".dropdown").on("click", function() {
+    console.log($('.dropdown-content'));
+    if ($(".dropdown-content").css('display') === 'none') {
+      $(".dropdown-content").css({ display: "block" });
+    } else {
+      $(".dropdown-content").css({ display: "none" });
+    }
+  });
+
+  window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+      if ($(".dropdown-content").css('display') === 'block') {
+        $(".dropdown-content").css({ display: "none" });
+      }
+    }
+  };
+
+  $(".dropdown").on("click", function() {
+    if ($(".dropdown-content").css('display') === 'none') {
+      $(".dropdown-content").css({ display: "block" });
+    } else {
+      $(".dropdown-content").css({ display: "none" });
+    }
+  });
 });
