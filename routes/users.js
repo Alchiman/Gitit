@@ -10,8 +10,8 @@ const { addOrderLineItems } = require("../server/database");
 const router = express.Router();
 
 module.exports = db => {
-  router.get("/profile/:id", (req, res) => {
-    const id = req.params.id;
+  router.get("/profile", (req, res) => {
+    const id = req.session.userId;
 
     db.getUserInfo(id)
       .then(data => {
@@ -36,9 +36,8 @@ module.exports = db => {
       });
   });
 
-  router.post("/profile/1/edit", (req, res) => {
+  router.post("/profile/edit", (req, res) => {
     const { id, name, email, phone } = req.body;
-    console.log(Number(id), name, email, phone);
     db.updateUserInfo(Number(id), name, email, phone)
       .then(data => {
         return res.json({ data });
