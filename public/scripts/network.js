@@ -56,8 +56,8 @@ function rejectOrder() {
 function updateUserInfo() {
   return $.ajax({
     method: "POST",
-    url: "/users/profile/1",
-    data: { id: 1, name: "Luis", email: "abc@abc.com", phone: "1212121" }
+    url: "/users/profile/1/edit",
+    data: { id: 1, name: "Siul", email: "abc@abc.com", phone: "1212121" }
   });
 }
 
@@ -74,17 +74,29 @@ function getAdminHistory() {
     url: "/admins/history"
   });
 }
-function updateItem() {
+
+let myData = JSON.stringify({ userId: 1, orderCount: 11, itemList: { 3: 1, 4: 1 } });
+function createOrder() {
   return $.ajax({
     method: "POST",
-    url: "admins/menus/edit",
-    data: {
-      name: "bird",
-      price: 2,
-      description: "cant swim",
-      img_url: "../images/sushi-alaska-roll.jpg",
-      tag: "is maybe fish",
-      originalName: "Alaska Roll"
-    }
+    url: "/users/orders",
+    data: myData,
+    contentType: "application/json; charset=utf-8",
+    dataType: 'json'
+  });
+}
+
+function logIn(id) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/login",
+    data: { id },
+  });
+}
+
+function logOut() {
+  return $.ajax({
+    method: "POST",
+    url: "/api/logout"
   });
 }

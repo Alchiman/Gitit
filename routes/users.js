@@ -35,28 +35,13 @@ module.exports = db => {
         res.status(500).json({ error: err.message });
       });
   });
-  router.post("/profile/:id/edit", (req, res) => {
-    const { id, name, email, phone } = req.body;
-    console.log(id, name, email, phone);
-    db.updateUserInfo(id, name, email, phone)
-      .then(data => {
-        const user = data;
-        console.log("data:", data);
-        res.json({ user });
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
-  });
 
-  router.post("/profile/:id/edit", (req, res) => {
+  router.post("/profile/1/edit", (req, res) => {
     const { id, name, email, phone } = req.body;
-    console.log(id, name, email, phone);
-    db.updateUserInfo(id, name, email, phone)
+    console.log(Number(id), name, email, phone);
+    db.updateUserInfo(Number(id), name, email, phone)
       .then(data => {
-        const user = data;
-        console.log("data:", data);
-        res.json({ user });
+        return res.json({ data });
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
@@ -84,6 +69,7 @@ module.exports = db => {
         res.status(500).json({ error: err.message });
       });
   });
+
   router.post("/orders", (req, res) => {
     // const userId = req.session.user_id;
     // will get back to this later
