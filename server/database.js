@@ -218,7 +218,7 @@ const getUserInfo = function(id) {
       FROM users WHERE id = $1`, [id])
     .then(result => {
       console.log(result.rows);
-      return result.rows[0];
+      return result.rows;
     })
     .catch(err => console.log(err.message));
 };
@@ -233,7 +233,7 @@ const updateUserInfo = function(id, name, email, phone) {
     phone = $4
     WHERE id = $1;`, [id, name, email, phone])
     .then(result => {
-      return result.rows[0];
+      return true;
     })
     .catch(err => console.log(err.message));
 };
