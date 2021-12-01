@@ -181,19 +181,6 @@ const adminOrderHistory = function() {
 
 exports.adminOrderHistory = adminOrderHistory;
 
-const getPendingOrders = function() {
-  return db
-    .query(
-      "SELECT * FROM orders WHERE status = 'pending' ORDER BY date_created; "
-    )
-    .then(result => {
-      return result.rows;
-    })
-    .catch(err => console.log(err.message));
-};
-
-exports.getPendingOrders = getPendingOrders;
-
 const getPhoneNumber = function(order_no) {
   return db
     .query(
@@ -313,4 +300,4 @@ const itemIdByName = function(name) {
     })
     .catch(err => console.log(err.message));
 };
-exports.updateUserInfo = itemIdByName;
+exports.itemIdByName = itemIdByName;

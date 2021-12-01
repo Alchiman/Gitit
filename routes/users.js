@@ -87,17 +87,22 @@ module.exports = db => {
   router.post("/orders", (req, res) => {
     // const userId = req.session.user_id;
     // will get back to this later
-    db.createOrder(userId)
+    const { userId, orderCount, itemList } = req.body;
+    console.log("itemList", itemList);
+    db.createOrder(userId, orderCount)
       .then(data => {
-        return res.json({ data });
-        addOrderLineItems(data.id, req.body.itemList);
+        return db.addOrderLineItems(data.id, itemList);
+      })
+      .then(result => {
+        console.log(result);
+        return res.json({ result });
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
       });
   });
 
-  router.post("/orders/cancel", (req, res) => {
+  router.post("/orders/gitl", (req, res) => {
     const orderNumber = req.body.order_number;
     db.cancelOrder(orderNumber)
       .then(data => {
