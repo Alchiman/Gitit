@@ -10,9 +10,14 @@ $(document).ready(function() {
     $("nav p").text(itemCount);
     $(".card__footer button").on("click", function() {
       itemCount++;
+      //add item to cart object for calculating items
       const itemName = $(this).parent().parent().find("p")[0].innerText;
       orderSummary.addToCart(itemName);
       $("nav p").text(itemCount);
     });
+  });
+
+  updateItem().then(function(json) {
+    console.log(json);
   });
 });
