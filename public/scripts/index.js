@@ -24,7 +24,6 @@ $(document).ready(function() {
   // });
 
   $(".dropdown").on("click", function() {
-    console.log($('.dropdown-content'));
     if ($(".dropdown-content").css('display') === 'none') {
       $(".dropdown-content").css({ display: "block" });
     } else {
@@ -32,19 +31,36 @@ $(document).ready(function() {
     }
   });
 
+  $("#luis").on("click", function() {
+    logIn(1).then(function(json) {
+      console.log(json);
+    });
+  });
+
+  $("#alireza").on("click", function() {
+    logIn(3).then(function(json) {
+      console.log(json);
+    });
+  });
+
+  $("#ivan").on("click", function() {
+    logIn(2).then(function(json) {
+      console.log(json);
+    });
+  });
+
+  $("#logout").on("click", function() {
+    logOut().then(function(json) {
+      console.log(json);
+    });
+  });
+
+
   window.onclick = function(e) {
-    if (!e.target.matches('.dropbtn')) {
+    if (!e.target.matches('.dropbtn') && !e.target.matches('.dropdown-content button')) {
       if ($(".dropdown-content").css('display') === 'block') {
         $(".dropdown-content").css({ display: "none" });
       }
     }
   };
-
-  $(".dropdown").on("click", function() {
-    if ($(".dropdown-content").css('display') === 'none') {
-      $(".dropdown-content").css({ display: "block" });
-    } else {
-      $(".dropdown-content").css({ display: "none" });
-    }
-  });
 });

@@ -89,9 +89,14 @@ function createOrder() {
 function logIn(id) {
   return $.ajax({
     method: "POST",
-    url: "/users/orders",
-    data: { id: id },
-    contentType: "application/json; charset=utf-8",
-    dataType: 'json'
+    url: "/api/login",
+    data: { id },
+  });
+}
+
+function logOut() {
+  return $.ajax({
+    method: "POST",
+    url: "/api/logout"
   });
 }
