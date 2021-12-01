@@ -19,5 +19,21 @@ module.exports = db => {
         res.status(500).json({ error: err.message });
       });
   });
+
+  router.post("/profile/:id", (req, res) => {
+    const { id, name, email, phone } = req.body;
+    db.updateUserInfo(id, name, email, phone)
+      .then(data => {
+        const user = data;
+        console.log('data:', data);
+        res.json({ user });
+
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+
   return router;
 };
