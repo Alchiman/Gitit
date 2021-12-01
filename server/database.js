@@ -232,7 +232,7 @@ const getUserInfo = function(id) {
       FROM users WHERE id = $1`, [id])
     .then(result => {
       console.log(result.rows);
-      return result.rows[0];
+      return result.rows;
     })
     .catch(err => console.log(err.message));
 };

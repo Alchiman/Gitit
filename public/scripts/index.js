@@ -16,8 +16,4 @@ $(document).ready(function() {
       $("nav p").text(itemCount);
     });
   });
-
-  updateItem().then(function(json) {
-    console.log(json);
-  });
 });
