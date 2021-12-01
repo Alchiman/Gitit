@@ -42,7 +42,7 @@ const adminsRoutes = require("./routes/admins");
 app.use("/users", usersRoutes(database));
 app.use("/api/widgets", widgetsRoutes(database));
 app.use("/api", apiRoutes(database));
-app.use("/admin", adminsRoutes(database));
+app.use("/admins", adminsRoutes(database));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
