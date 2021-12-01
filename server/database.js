@@ -298,4 +298,4 @@ const itemIdByName = function(name) {
     })
     .catch(err => console.log(err.message));
 };
-exports.updateUserInfo = itemIdByName;
+exports.itemIdByName = itemIdByName;
