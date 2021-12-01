@@ -19,7 +19,7 @@ $(document).ready(function() {
       $("nav p").text(itemCount);
     });
   });
-  updateUserInfo()
+  // updateUserInfo()
   // createOrder().then(function(json) {
   //   console.log(json);
   // });
