@@ -181,19 +181,6 @@ const adminOrderHistory = function() {
 
 exports.adminOrderHistory = adminOrderHistory;
 
-const getPendingOrders = function() {
-  return db
-    .query(
-      "SELECT * FROM orders WHERE status = 'pending' ORDER BY date_created; "
-    )
-    .then(result => {
-      return result.rows;
-    })
-    .catch(err => console.log(err.message));
-};
-
-exports.getPendingOrders = getPendingOrders;
-
 const getPhoneNumber = function(order_no) {
   return db
     .query(
@@ -233,6 +220,7 @@ const createOrder = function(user_id, order_count) {
       [user_id, order_no]
     )
     .then(result => {
+      console.log(result.rows[0]);
       return result.rows[0];
     })
     .catch(err => console.log(err.message));
@@ -242,15 +230,12 @@ exports.createOrder = createOrder;
 const addOrderLineItems = function(order_id, itemList) {
   let queryString = `INSERT INTO order_line_items (item_id, order_id, quantity) VALUES`;
   const numberOfItems = Object.keys(itemList).length * 2;
-  let queryParams = Object.entries(itemList)
-    .flat()
-    .map(vals => parseInt(vals));
+  let queryParams = Object.entries(itemList).flat().map(vals => parseInt(vals));
   for (let i = 1; i <= numberOfItems; i += 2) {
     queryString += ` ($${i}, ${order_id}, $${i + 1}),`;
   }
   queryString = queryString.slice(0, -1);
   queryString += ` RETURNING *;`;
-
   return db
     .query(queryString, queryParams)
     .then(result => {
