@@ -37,7 +37,8 @@ module.exports = db => {
   });
 
   router.post("/profile/edit", (req, res) => {
-    const { id, name, email, phone } = req.body;
+    const id = req.session.userId;
+    const { name, email, phone } = req.body;
     db.updateUserInfo(Number(id), name, email, phone)
       .then(data => {
         return res.json({ data });
