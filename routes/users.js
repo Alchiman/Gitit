@@ -70,9 +70,8 @@ module.exports = db => {
       });
   });
 
+  // user palces and order
   router.post("/orders", (req, res) => {
-    // const userId = req.session.user_id;
-    // will get back to this later
     const { userId, orderCount, itemList } = req.body;
     console.log("itemList", itemList);
     db.createOrder(userId, orderCount)
@@ -88,7 +87,8 @@ module.exports = db => {
       });
   });
 
-  router.post("/orders/gitl", (req, res) => {
+  // user cancels order
+  router.post("/orders/cancel", (req, res) => {
     const orderNumber = req.body.order_number;
     db.cancelOrder(orderNumber)
       .then(data => {
