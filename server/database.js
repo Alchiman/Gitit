@@ -273,7 +273,9 @@ const getUserInfo = function(id) {
 exports.getUserInfo = getUserInfo;
 
 const updateUserInfo = function(id, name, email, phone) {
+  console.log("HERE:",id, name, email, phone)
   return db
+
     .query(
       `
     UPDATE users
@@ -284,7 +286,8 @@ const updateUserInfo = function(id, name, email, phone) {
       [id, name, email, phone]
     )
     .then(result => {
-      return true;
+      console.log("ROWS:",result.rows)
+      return result;
     })
     .catch(err => console.log(err.message));
 };
@@ -298,4 +301,4 @@ const itemIdByName = function(name) {
     })
     .catch(err => console.log(err.message));
 };
-exports.updateUserInfo = itemIdByName;
+exports.itemIdByName = itemIdByName;
