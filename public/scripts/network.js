@@ -2,7 +2,7 @@
 function getAllMenuItems() {
   let url = "/api/";
   return $.ajax({
-    url,
+    url
   });
 }
 
@@ -10,7 +10,7 @@ function acceptOrder() {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/accept",
-    data: { status: 'accepted', order_no: 1 }
+    data: { status: "accepted", order_no: 1 }
   });
 }
 
@@ -26,7 +26,14 @@ function updateItem() {
   return $.ajax({
     method: "POST",
     url: "/admins/menus/edit",
-    data: { name: 'ABC', price: '1', img_url: '../images/sushi-on-cheese.jpg', tag: 'cheese', description: 'yeast', original_name: 'Tuna Salmon Roll' }
+    data: {
+      name: "ABC",
+      price: "1",
+      img_url: "../images/sushi-on-cheese.jpg",
+      tag: "cheese",
+      description: "yeast",
+      original_name: "Tuna Salmon Roll"
+    }
   });
 }
 
@@ -34,16 +41,15 @@ function deleteItem() {
   return $.ajax({
     method: "POST",
     url: "/admins/menus/delete",
-    data: { name: 'Alaska Roll' }
+    data: { name: "Alaska Roll" }
   });
 }
-
 
 function rejectOrder() {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/reject",
-    data: { status: 'rejected', order_no: 2 }
+    data: { status: "rejected", order_no: 2 }
   });
 }
 
@@ -51,7 +57,7 @@ function updateUserInfo() {
   return $.ajax({
     method: "POST",
     url: "/users/profile/1",
-    data: { id: 1, name: 'Luis', email: 'abc@abc.com', phone: '1212121' }
+    data: { id: 1, name: "Luis", email: "abc@abc.com", phone: "1212121" }
   });
 }
 
@@ -65,13 +71,20 @@ function fulfillOrder() {
 
 function getAdminHistory() {
   return $.ajax({
-    url: "/admins/history",
+    url: "/admins/history"
   });
 }
 function updateItem() {
   return $.ajax({
     method: "POST",
     url: "admins/menus/edit",
-    data: { name: 'bird', price: 2, description: 'cant swim', img_url: '../images/sushi-alaska-roll.jpg', tag: 'is maybe fish', originalName: 'Alaska Roll' }
+    data: {
+      name: "bird",
+      price: 2,
+      description: "cant swim",
+      img_url: "../images/sushi-alaska-roll.jpg",
+      tag: "is maybe fish",
+      originalName: "Alaska Roll"
+    }
   });
 }

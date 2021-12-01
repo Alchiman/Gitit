@@ -1,7 +1,7 @@
 // load .env data into process.env
 require("dotenv").config();
 
-const database = require('./server/database');
+const database = require("./server/database");
 
 // Web server config
 const PORT = process.env.PORT || 8080;
@@ -9,7 +9,6 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -24,7 +23,7 @@ app.use(
   sassMiddleware({
     source: __dirname + "/styles",
     destination: __dirname + "/public/styles",
-    isSass: false, // false => scss, true => sass
+    isSass: false // false => scss, true => sass
   })
 );
 

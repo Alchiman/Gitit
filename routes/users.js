@@ -6,67 +6,107 @@
  */
 
 const express = require("express");
+const { addOrderLineItems } = require("../server/database");
 const router = express.Router();
 
 module.exports = db => {
   router.get("/profile/:id", (req, res) => {
-    const id = req.params.id
-   
+    const id = req.params.id;
+
     db.getUserInfo(id)
       .then(data => {
         let user = data;
-        console.log("user:",data[0])
-        let isAdmin = data[0].is_admin
+        console.log("user:", data[0]);
+        let isAdmin = data[0].is_admin;
         //checks to see if its an admin
-        if (isAdmin === true){
-
-          console.log('is admin:',isAdmin)
-          console.log("IM AN ADMIN")
-          res.redirect("admin/orders")
+        if (isAdmin === true) {
+          console.log("is admin:", isAdmin);
+          console.log("IM AN ADMIN");
+          res.redirect("admin/orders");
           res.json({ user });
         }
         //if not what the user will see
-        else{  
-          console.log("I'm not an admin" )
-          res.json({ user })
-      }
-        
+        else {
+          console.log("I'm not an admin");
+          res.json({ user });
+        }
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
       });
   });
   router.post("/profile/:id/edit", (req, res) => {
-   const {id ,name ,email ,phone} = req.body
-   console.log(id ,name, email, phone)
-    db.updateUserInfo(id, name, email, phone)
-      .then(data => {
-        const user = data;
-        console.log('data:',data)
-        res.json({ user });
-
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-
-  router.post("/profile/:id", (req, res) => {
     const { id, name, email, phone } = req.body;
+    console.log(id, name, email, phone);
     db.updateUserInfo(id, name, email, phone)
       .then(data => {
         const user = data;
-        console.log('data:', data);
+        console.log("data:", data);
         res.json({ user });
-
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
       });
   });
 
+  router.post("/profile/:id/edit", (req, res) => {
+    const { id, name, email, phone } = req.body;
+    console.log(id, name, email, phone);
+    db.updateUserInfo(id, name, email, phone)
+      .then(data => {
+        const user = data;
+        console.log("data:", data);
+        res.json({ user });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  // get request for user menu items
+  router.get("/items", (req, res) => {
+    db.getAllItems()
+      .then(data => {
+        return res.json({ data });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+  // get request for user order history
+  router.get("/orders", (req, res) => {
+    const userId = req.session.user_id;
+    db.userOrderHistory(userId)
+      .then(data => {
+        return res.json({ data });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+  router.post("/orders", (req, res) => {
+    // const userId = req.session.user_id;
+    // will get back to this later
+    db.createOrder(userId)
+      .then(data => {
+        return res.json({ data });
+        addOrderLineItems(data.id, req.body.itemList);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.post("/orders/cancel", (req, res) => {
+    const orderNumber = req.body.order_number;
+    db.cancelOrder(orderNumber)
+      .then(data => {
+        return res.json({ data });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
   return router;
-
 };
-

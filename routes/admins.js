@@ -23,7 +23,8 @@ module.exports = db => {
     db.adminOrderHistory()
       .then(data => {
         return res.send({ data });
-      }).catch(err => {
+      })
+      .catch(err => {
         res.status(500).json({ error: err.message });
       });
   });
@@ -32,7 +33,7 @@ module.exports = db => {
     db.getAllItems()
       .then(data => {
         const items = data;
-        console.log("data:", data)
+        console.log("data:", data);
         res.json({ items });
       })
       .catch(err => {
@@ -51,14 +52,13 @@ module.exports = db => {
       });
   });
 
-
   router.post("/menus/create", (req, res) => {
-    const { name, price, description, img_url, tag } = req.body
-    console.log(name, price, description, img_url, tag)
+    const { name, price, description, img_url, tag } = req.body;
+    console.log(name, price, description, img_url, tag);
     db.addNewItem(name, Number(price), description, img_url, tag)
       .then(data => {
         const items = data[0];
-        console.log("data:", data[0])
+        console.log("data:", data[0]);
         res.json({ items });
       })
       .catch(err => {

@@ -3,7 +3,7 @@
 $(document).ready(function() {
   getAllMenuItems().then(function(json) {
     menuItems.addMenuItems(json);
-    views_manager.render('menuList');
+    views_manager.render("menuList");
 
     //setup menu item button listeners
     let itemCount = 0;
@@ -11,9 +11,15 @@ $(document).ready(function() {
     $(".card__footer button").on("click", function() {
       itemCount++;
       //add item to cart object for calculating items
-      const itemName = $(this).parent().parent().find("p")[0].innerText;
+      const itemName = $(this)
+        .parent()
+        .parent()
+        .find("p")[0].innerText;
       orderSummary.addToCart(itemName);
       $("nav p").text(itemCount);
     });
   });
+  // cancelOrder().then(function(json) {
+  //   console.log(json);
+  // });
 });
