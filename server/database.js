@@ -83,6 +83,19 @@ const acceptOrRejectOrder = function(status, order_no) {
 };
 exports.acceptOrRejectOrder = acceptOrRejectOrder;
 
+const getPendingOrders = function() {
+  return db
+    .query(
+      "SELECT * FROM orders WHERE status = 'pending' ORDER BY date_created; "
+    )
+    .then(result => {
+      return result.rows;
+    })
+    .catch(err => console.log(err.message));
+};
+
+exports.getPendingOrders = getPendingOrders;
+
 const cancelOrder = function(order_no) {
   return db
     .query(
@@ -127,17 +140,18 @@ const getActiveOrders = function() {
 };
 exports.getActiveOrders = getActiveOrders;
 
-const getOrderHistory = function() {
+const adminOrderHistory = function() {
   return db
-    .query(`SELECT * FROM orders WHERE status = 'fulfilled' or status = 'rejected';`,)
+    .query(
+      `SELECT * FROM orders WHERE status != 'accepted' AND status != 'pending' ORDER BY date_created DESC;`
+    )
     .then(result => {
-
-      return result.rows[0];
+      return result.rows;
     })
     .catch(err => console.log(err.message));
 };
 
-exports.getOrderHistory = getOrderHistory;
+exports.adminOrderHistory = adminOrderHistory;
 
 const getPhoneNumber = function(order_no) {
   return db
@@ -233,7 +247,7 @@ const updateUserInfo = function(id, name, email, phone) {
     phone = $4
     WHERE id = $1;`, [id, name, email, phone])
     .then(result => {
-      return result.rows[0];
+      return true;
     })
     .catch(err => console.log(err.message));
 };
