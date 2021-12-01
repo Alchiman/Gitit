@@ -56,8 +56,8 @@ function rejectOrder() {
 function updateUserInfo() {
   return $.ajax({
     method: "POST",
-    url: "/users/profile/1",
-    data: { id: 1, name: "Luis", email: "abc@abc.com", phone: "1212121" }
+    url: "/users/profile/1/edit",
+    data: { id: 1, name: "Siul", email: "abc@abc.com", phone: "1212121" }
   });
 }
 
