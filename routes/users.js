@@ -35,19 +35,6 @@ module.exports = db => {
         res.status(500).json({ error: err.message });
       });
   });
-  router.post("/profile/:id/edit", (req, res) => {
-    const { id, name, email, phone } = req.body;
-    console.log(id, name, email, phone);
-    db.updateUserInfo(id, name, email, phone)
-      .then(data => {
-        const user = data;
-        console.log("data:", data);
-        res.json({ user });
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
-  });
 
   router.post("/profile/:id/edit", (req, res) => {
     const { id, name, email, phone } = req.body;
@@ -84,13 +71,17 @@ module.exports = db => {
         res.status(500).json({ error: err.message });
       });
   });
+
   router.post("/orders", (req, res) => {
     // const userId = req.session.user_id;
     // will get back to this later
-    db.createOrder(userId)
+    const { userId, orderCount, itemList } = req.body;
+    db.createOrder(userId, orderCount)
       .then(data => {
-        return res.json({ data });
-        addOrderLineItems(data.id, req.body.itemList);
+        return db.addOrderLineItems(data.id, itemList);
+      })
+      .then(result => {
+        return res.json({ result });
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
