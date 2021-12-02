@@ -3,8 +3,31 @@
 $(() => {
 
   const $main = $('#main-content');
-
+  const $nav = $('nav');
   window.views_manager = {};
+
+  window.views_manager.navBarRender = function(component) {
+    $navbar_user.detach();
+    $navbar_admin.detach();
+
+    switch (component) {
+      case 'navBarUser':
+        $navbar_user.appendTo($nav);
+        break;
+      case 'navBarAdmin':
+        $navbar_admin.appendTo($nav);
+        break;
+      case 'error': {
+        const $error = $(`<p>${arguments[1]}</p>`);
+        $error.appendTo('body');
+        setTimeout(() => {
+          $error.remove();
+          views_manager.render('navBarUser');
+        }, 2000);
+        break;
+      }
+    }
+  };
 
   window.views_manager.render = function(component) {
     $menuList.detach();
