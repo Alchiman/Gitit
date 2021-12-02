@@ -9,11 +9,10 @@ $(() => {
   $(".navbar__item").on("click", function() {
     if ($(this).text() === 'Profile') {
       views_manager.render('profile');
-    } else if ($(this).text() === 'Home') {
-      views_manager.render('menuList');
-    } else {
-      $(".container--card").detach();
-      views_manager.render('orderSummary');
+    } else if ($(this).text() === 'Menu') {
+      views_manager.render('adminMenuList');
+    } else if ($(this).text() === 'History') {
+      views_manager.render('adminHistory');
     }
 
     active.removeClass('js-active');
@@ -34,6 +33,7 @@ $(() => {
       console.log(json);
       views_manager.navBarRender('navBarUser');
       $('#user-dropdown .dropbtn span').html('Luis');
+      views_manager.render('menuList');
     });
   });
 
@@ -42,6 +42,7 @@ $(() => {
       console.log(json);
       views_manager.navBarRender('navBarUser');
       $('#user-dropdown .dropbtn span').html('Alireza');
+      views_manager.render('menuList');
     });
   });
 
@@ -50,6 +51,7 @@ $(() => {
       console.log(json);
       $('#admin-dropdown .dropbtn span').html('Ivan');
       views_manager.navBarRender('navBarAdmin');
+      views_manager.render("adminMenuList");
     });
   });
 

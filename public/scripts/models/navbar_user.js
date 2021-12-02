@@ -34,6 +34,7 @@ $(() => {
       console.log(json);
       $('#user-dropdown .dropbtn span').html('Luis');
       views_manager.navBarRender('navBarUser');
+      views_manager.render('menuList');
     });
   });
 
@@ -42,6 +43,7 @@ $(() => {
       console.log(json);
       $('#user-dropdown .dropbtn span').html('Alireza');
       views_manager.navBarRender('navBarUser');
+      views_manager.render('menuList');
     });
   });
 
@@ -50,6 +52,7 @@ $(() => {
       console.log(json);
       views_manager.navBarRender('navBarAdmin');
       $('#admin-dropdown .dropbtn span').html('Ivan');
+      views_manager.render('adminMenuList');
     });
   });
 
