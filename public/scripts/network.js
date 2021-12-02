@@ -19,6 +19,18 @@ function sendCustomerSms() {
     url: "/api/sms",
   });
 }
+function getPendingAcceptedOrders() {
+  return $.ajax({
+    method: "GET",
+    url: "/admins/",
+  });
+}
+function adminOrderHistory() {
+  return $.ajax({
+    method: "GET",
+    url: "/admins/history",
+  });
+}
 
 function acceptOrder() {
   return $.ajax({
@@ -68,27 +80,27 @@ function rejectOrder() {
   });
 }
 
-function updateUserInfo() {
+function updateUserInfo(id ,name , email, phone) {
   return $.ajax({
     method: "POST",
     url: "/users/profile/1/edit",
-    data: { id: 1, name: "Siul", email: "abc@abc.com", phone: "1212121" }
+    data: { id: id , name: name, email: email, phone: phone }
   });
 }
-function addNewItem() {
+function addNewItem(name ,price ,description , img_url, tag) {
   return $.ajax({
     method: "POST",
     url: "/admins/menus/create",
     // name, price, description, img_url, tag
-    data: { name: "jop", price: 5, description: "in here", img_url: "im not areal url", tag: "this is my tag" }
+    data: { name: name, price: price , description: description, img_url: img_url, tag: tag }
   });
 }
 
-function fulfillOrder() {
+function fulfillOrder(orderNo) {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/fulfill",
-    data: { order_no: 1 }
+    data: { order_no: orderNo }
   });
 }
 
