@@ -32,33 +32,33 @@ function adminOrderHistory() {
   });
 }
 
-function acceptOrder() {
+function acceptOrder(status , orderNo) {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/accept",
-    data: { status: "accepted", order_no: 1 }
+    data: { status: status, order_no: orderNo }
   });
 }
 
-function cancelOrder() {
+function cancelOrder(orderNo) {
   return $.ajax({
     method: "POST",
     url: "/users/orders/cancel",
-    data: { order_no: 2 }
+    data: { order_no: orderNo }
   });
 }
 
-function updateItem() {
+function updateItem(name, price, description, imgUrl, tag, originalName) {
   return $.ajax({
     method: "POST",
     url: "/admins/menus/edit",
     data: {
-      name: "ABC",
-      price: "1",
-      img_url: "../images/sushi-on-cheese.jpg",
-      tag: "cheese",
-      description: "yeast",
-      original_name: "Tuna Salmon Roll"
+      name: name,
+      price: price,
+      img_url: imgUrl,
+      tag:  tag,
+      description: description,
+      original_name: originalName
     }
   });
 }
@@ -72,11 +72,11 @@ function deleteItem(data) {
   });
 }
 
-function rejectOrder() {
+function rejectOrder(status, orderNo) {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/reject",
-    data: { status: "rejected", order_no: 2 }
+    data: { status: status , order_no: orderNo }
   });
 }
 
@@ -125,7 +125,7 @@ function logIn(id) {
   return $.ajax({
     method: "POST",
     url: "/api/login",
-    data: { id },
+    data: { id :id},
   });
 }
 
