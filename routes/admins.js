@@ -59,6 +59,20 @@ module.exports = db => {
     }
   });
 
+  router.get("/menus/edit", (req, res) => {
+    if (req.session.isAdmin) {
+      db.getItemByName(name)
+        .then(data => {
+          res.json({ data });
+        })
+        .catch(err => {
+          res.status(500).json({ error: err.message });
+        });
+    } else {
+      return res.status(403).send("not an admin");
+    }
+  });
+
   router.post("/menus/create", (req, res) => {
     if (req.session.isAdmin) {
       const { name, price, description, img_url, tag } = req.body;

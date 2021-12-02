@@ -16,23 +16,23 @@ function getAllMenuItems() {
 function sendCustomerSms() {
   return $.ajax({
     method: "POST",
-    url: "/api/sms",
+    url: "/api/sms"
   });
 }
 function getAdminPendingAcceptedOrders() {
   return $.ajax({
     method: "GET",
-    url: "/admins/",
+    url: "/admins/"
   });
 }
 function adminOrderHistory() {
   return $.ajax({
     method: "GET",
-    url: "/admins/history",
+    url: "/admins/history"
   });
 }
 
-function acceptOrder(status , orderNo) {
+function acceptOrder(status, orderNo) {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/accept",
@@ -56,7 +56,7 @@ function updateItem(name, price, description, imgUrl, tag, originalName) {
       name: name,
       price: price,
       img_url: imgUrl,
-      tag:  tag,
+      tag: tag,
       description: description,
       original_name: originalName
     }
@@ -64,7 +64,7 @@ function updateItem(name, price, description, imgUrl, tag, originalName) {
 }
 
 function deleteItem(data) {
-  console.log('data', data);
+  console.log("data", data);
   return $.ajax({
     method: "POST",
     url: "/admins/menus/delete",
@@ -76,7 +76,7 @@ function rejectOrder(status, orderNo) {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/reject",
-    data: { status: status , order_no: orderNo }
+    data: { status: status, order_no: orderNo }
   });
 }
 
@@ -92,7 +92,13 @@ function addNewItem(name, price, description, img_url, tag) {
     method: "POST",
     url: "/admins/menus/create",
     // name, price, description, img_url, tag
-    data: { name: name, price: price, description: description, img_url: img_url, tag: tag }
+    data: {
+      name: name,
+      price: price,
+      description: description,
+      img_url: img_url,
+      tag: tag
+    }
   });
 }
 
@@ -117,7 +123,7 @@ function createOrder(data) {
     url: "/users/orders",
     data: JSON.stringify(data),
     contentType: "application/json; charset=utf-8",
-    dataType: 'json'
+    dataType: "json"
   });
 }
 
@@ -125,7 +131,7 @@ function logIn(id) {
   return $.ajax({
     method: "POST",
     url: "/api/login",
-    data: { id :id},
+    data: { id: id }
   });
 }
 
@@ -139,6 +145,22 @@ function logOut() {
 function getUserInfo() {
   return $.ajax({
     method: "GET",
-    url: "/users/profile",
+    url: "/users/profile"
+  });
+}
+
+function getUserPendingAcceptedOrder(user_id) {
+  return $.ajax({
+    method: "GET",
+    url: "/users/orders",
+    data: { userId: user_id }
+  });
+}
+
+function getItemInfo(item_name) {
+  return $.ajax({
+    method: "GET",
+    url: "/admins/menus/edit",
+    data: { itemName: item_name }
   });
 }

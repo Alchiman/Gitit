@@ -88,6 +88,18 @@ module.exports = db => {
       });
   });
 
+  //user can see his order
+  router.get("/orders", (req, res) => {
+    const { userId } = req.session.userId;
+    db.getUserPendingAcceptedOrder(userId)
+      .then(data => {
+        return res.json({ data });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   // user cancels order
   router.post("/orders/cancel", (req, res) => {
     const orderNumber = req.body.order_number;
