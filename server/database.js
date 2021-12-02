@@ -98,10 +98,10 @@ const acceptOrRejectOrder = function(status, order_no) {
 };
 exports.acceptOrRejectOrder = acceptOrRejectOrder;
 
-const getPendingOrders = function() {
+const getPendingAcceptedOrders = function() {
   return db
     .query(
-      "SELECT * FROM orders WHERE status = 'pending' ORDER BY date_created; "
+      "SELECT * FROM orders WHERE status = 'pending' OR status = 'accepted' ORDER BY status DESC, date_created ; "
     )
     .then(result => {
       return result.rows;
@@ -109,7 +109,7 @@ const getPendingOrders = function() {
     .catch(err => console.log(err.message));
 };
 
-exports.getPendingOrders = getPendingOrders;
+exports.getPendingAcceptedOrders = getPendingAcceptedOrders;
 
 const cancelOrder = function(order_no) {
   return db
@@ -302,3 +302,14 @@ const itemIdByName = function(name) {
     .catch(err => console.log(err.message));
 };
 exports.itemIdByName = itemIdByName;
+
+const isAdmin = function(id) {
+  return db
+    .query(`SELECT is_admin  FROM users WHERE id = $1;`, [id])
+    .then(result => {
+      console.log(result.rows[0])
+      return result.rows[0];
+    })
+    .catch(err => console.log(err.message));
+};
+exports.isAdmin = isAdmin;
