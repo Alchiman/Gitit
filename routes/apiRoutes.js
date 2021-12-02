@@ -19,7 +19,6 @@ module.exports = (db) => {
   router.post("/login", (req, res) => {
     const { id } = req.body;
     req.session.userId = id;
-    console.log(req.session.userId);
     return res.send(req.session.userId);
   });
 
