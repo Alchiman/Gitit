@@ -109,7 +109,15 @@ const getPendingAcceptedOrders = function() {
       WHERE status = 'pending' OR status = 'accepted' ORDER BY status DESC, date_created ;`
     )
     .then(result => {
-      return result.rows;
+      let orders = {};
+      for (const order of result.rows) {
+        if (!orders[order.id]) {
+          orders[order.id] = [order];
+        } else {
+          orders[order.id].push(order);
+        }
+      }
+      return orders;
     })
     .catch(err => console.log(err.message));
 };
@@ -128,7 +136,15 @@ const getUserPendingAcceptedOrder = function(userId) {
       [userId]
     )
     .then(result => {
-      return result.rows;
+      let orders = {};
+      for (const order of result.rows) {
+        if (!orders[order.id]) {
+          orders[order.id] = [order];
+        } else {
+          orders[order.id].push(order);
+        }
+      }
+      return orders;
     })
     .catch(err => console.log(err.message));
 };
@@ -319,15 +335,17 @@ const updateUserInfo = function(id, name, email, phone) {
 };
 exports.updateUserInfo = updateUserInfo;
 
-const itemIdByName = function(name) {
+const getItemByName = function(name) {
   return db
-    .query(`SELECT id  FROM items WHERE name = $1;`, [name])
+    .query(`SELECT id, name, price, img_url, tag FROM items WHERE name = $1;`, [
+      name
+    ])
     .then(result => {
       return result.rows[0];
     })
     .catch(err => console.log(err.message));
 };
-exports.itemIdByName = itemIdByName;
+exports.getItemByName = getItemByName;
 
 const isAdmin = function(id) {
   return db

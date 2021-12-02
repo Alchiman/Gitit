@@ -16,15 +16,15 @@ function getAllMenuItems() {
 function sendCustomerSms() {
   return $.ajax({
     method: "POST",
-    url: "/api/sms",
+    url: "/api/sms"
   });
 }
 
-function acceptOrder() {
+function acceptOrder(order_no) {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/accept",
-    data: { status: "accepted", order_no:  }
+    data: { status: "accepted", order_no: order_no }
   });
 }
 
@@ -52,7 +52,7 @@ function updateItem() {
 }
 
 function deleteItem(data) {
-  console.log('data', data);
+  console.log("data", data);
   return $.ajax({
     method: "POST",
     url: "/admins/menus/delete",
@@ -80,7 +80,13 @@ function addNewItem() {
     method: "POST",
     url: "/admins/menus/create",
     // name, price, description, img_url, tag
-    data: { name: "jop", price: 5, description: "in here", img_url: "im not areal url", tag: "this is my tag" }
+    data: {
+      name: "jop",
+      price: 5,
+      description: "in here",
+      img_url: "im not areal url",
+      tag: "this is my tag"
+    }
   });
 }
 
@@ -88,7 +94,7 @@ function fulfillOrder() {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/fulfill",
-    data: { status: 'fulfilled', order_no: 1}
+    data: { status: "fulfilled", order_no: 1 }
   });
 }
 
@@ -98,14 +104,6 @@ function getAdminHistory() {
   });
 }
 
-function getUserPendingAcceptedOrder(){
-  return $.ajax({
-    method: "GET",
-    url: "/users/orders",
-    data: {userId}
-  })
-}
-
 //let myData = JSON.stringify({ userId: 1, orderCount: 11, itemList: { 3: 1, 4: 1 } });
 function createOrder(data) {
   return $.ajax({
@@ -113,7 +111,7 @@ function createOrder(data) {
     url: "/users/orders",
     data: JSON.stringify(data),
     contentType: "application/json; charset=utf-8",
-    dataType: 'json'
+    dataType: "json"
   });
 }
 
@@ -121,7 +119,7 @@ function logIn(id) {
   return $.ajax({
     method: "POST",
     url: "/api/login",
-    data: { id },
+    data: { id: id }
   });
 }
 
@@ -129,5 +127,20 @@ function logOut() {
   return $.ajax({
     method: "POST",
     url: "/api/logout"
+  });
+}
+function getUserPendingAcceptedOrder(user_id) {
+  return $.ajax({
+    method: "GET",
+    url: "/users/orders",
+    data: { userId: user_id }
+  });
+}
+
+function getItemInfo(item_name) {
+  return $.ajax({
+    method: "GET",
+    url: "/admins/menus/edit",
+    data: { itemName: item_name }
   });
 }
