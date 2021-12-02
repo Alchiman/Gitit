@@ -10,13 +10,16 @@ const router = express.Router();
 
 module.exports = db => {
   router.get("/", (req, res) => {
-    db.createOrder(1, 6)
-      .then(data => {
-        res.json({ data });
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
+    if (req.session.isAdmin) {
+      db.createOrder(1, 6)
+        .then(data => {
+          return res.json({ data });
+        })
+        .catch(err => {
+          return res.status(500).json({ error: err.message });
+        });
+    }
+    res.send("YOU ARE NOT AN ADMIN");
   });
 
   router.get("/history", (req, res) => {
@@ -35,6 +38,16 @@ module.exports = db => {
         const items = data;
         console.log("data:", data);
         res.json({ items });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.get("/orders", (req, res) => {
+    db.getPendingOrders()
+      .then(data => {
+        return res.send({ data });
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
@@ -69,16 +82,6 @@ module.exports = db => {
   router.post("/menus/edit", (req, res) => {
     const { name, price, description, img_url, tag, originalName } = req.body;
     db.updateItem(name, price, description, img_url, tag, originalName)
-      .then(data => {
-        return res.send({ data });
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-
-  router.get("/orders", (req, res) => {
-    db.getPendingOrders()
       .then(data => {
         return res.send({ data });
       })
