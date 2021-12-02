@@ -1,4 +1,4 @@
-const createMenuItem = (item) => {
+const createMenuItem = item => {
   const { description, img_url, name, price, tag } = item;
   return $(`
   <div class="card card--hover">

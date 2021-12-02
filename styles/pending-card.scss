@@ -1,0 +1,18 @@
+article {
+  width: 30%;
+  margin: 20px 20%;
+  border: solid black;
+  display: flex;
+  flex-direction: column;
+}
+article header {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+article table {
+}
+article footer {
+  padding: 20px;
+}
