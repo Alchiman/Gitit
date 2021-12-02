@@ -24,19 +24,19 @@ module.exports = (db) => {
       if (isAdmin === false) {
         console.log("NOT AN ADMIN");
 
-         req.session.isAdmin = false;
-         console.log("AFTER SET FALSE:",req.session.isAdmin )
-         return res.send(req.session.isAdmin)
-        } else {
-          req.session.isAdmin = true;
-          console.log("AFTER SET TRUE:",req.session.isAdmin  )
-          
-          return res.send(req.session.isAdmin)
-          
-        }
-      });
-      console.log("before return",req.session.isAdmin  )
-//this was breaking it ↓ ↓ ↓ ↓ ↓ ↓ ↓ 
+        req.session.isAdmin = false;
+        console.log("AFTER SET FALSE:", req.session.isAdmin)
+        return res.send(req.session.isAdmin)
+      } else {
+        req.session.isAdmin = true;
+        console.log("AFTER SET TRUE:", req.session.isAdmin)
+
+        return res.send(req.session.isAdmin)
+
+      }
+    });
+    console.log("before return", req.session.isAdmin)
+    //this was breaking it ↓ ↓ ↓ ↓ ↓ ↓ ↓
     // return res.send(req.session.userId);
   });
 

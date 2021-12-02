@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.5em;
+  padding: 0 3em;
 
   &--fixed {
     position: sticky;
@@ -66,6 +66,12 @@
   cursor: pointer;
 }
 
+.dropdown span {
+  font-weight: 600;
+    font-size: $fs-600;
+  pointer-events: none;
+}
+
 /* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
@@ -92,8 +98,3 @@
 .dropdown-content button:hover {
   background-color: black;
 }
-
-/* Show the dropdown menu on hover */
-// .dropdown:hover .dropdown-content {
-//   display: block;
-// }

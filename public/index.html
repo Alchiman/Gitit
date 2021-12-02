@@ -18,12 +18,17 @@
   <!-- App JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/network.js"></script>
-  <script type="text/javascript" src="/scripts/views_manager.js"></script>
-  <script type="text/javascript" src="/scripts/components/menu_list.js"></script>
-  <script type="text/javascript" src="/scripts/components/order_summary.js"></script>
-  <script type="text/javascript" src="/scripts/components/profile.js"></script>
-  <script type="text/javascript" src="/scripts/components/order_redirect.js"></script>
-  <script type="text/javascript" src="/scripts/components/order_receipt.js"></script>
+  <script type="text/javascript" src="/scripts/views_controller.js"></script>
+  <script type="text/javascript" src="/scripts/views/navbar_user.js"></script>
+  <script type="text/javascript" src="/scripts/models/navbar_user.js"></script>
+  <script type="text/javascript" src="/scripts/views/navbar_admin.js"></script>
+  <script type="text/javascript" src="/scripts/models/navbar_admin.js"></script>
+  <script type="text/javascript" src="/scripts/views/menu_list.js"></script>
+  <script type="text/javascript" src="/scripts/models/menu_list.js"></script>
+  <script type="text/javascript" src="/scripts/models/order_summary.js"></script>
+  <script type="text/javascript" src="/scripts/models/profile.js"></script>
+  <script type="text/javascript" src="/scripts/models/order_redirect.js"></script>
+  <script type="text/javascript" src="/scripts/models/order_receipt.js"></script>
   <script type="text/javascript" src="/scripts/index.js"></script>
   <script type="text/javascript" src="/scripts/helpers/loadListeners.js"></script>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -32,25 +37,6 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar--dark navbar--fixed">
-    <img class="navbar__logo" src="./images/gitit-logo.png" alt="logo">
-    <span class="navbar__item">Profile</span>
-    <span class="navbar__item">Home</span>
-    <span class="navbar__item">
-      <i class="fas fa-cart-arrow-down"></i>
-      Order
-      <p></p>
-    </span>
-    <div class="dropdown">
-      <button class="dropbtn">Log In
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content">
-        <button id="luis">Log in As Luis</button>
-        <button id="alireza">Log in As Alireza</button>
-        <button id="ivan">Log in As Ivan</button>
-        <button id="logout">Log Out</button>
-      </div>
-    </div>
   </nav>
   <!-- Main Content -->
   <main id="main-content">
