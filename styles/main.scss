@@ -1,6 +1,6 @@
-@import 'colors';
-@import 'typography';
-@import 'media-queries';
+@import "colors";
+@import "typography";
+@import "media-queries";
 
 main {
   display: flex;
@@ -13,7 +13,7 @@ main {
 .container {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 10px auto;
   width: 90%;
 
   &--orders {
@@ -32,11 +32,11 @@ main {
 
           td:nth-child(1) {
             text-align: left;
-         }
+          }
 
-         td:nth-child(2) {
+          td:nth-child(2) {
             text-align: right;
-         }
+          }
         }
       }
     }
@@ -47,16 +47,15 @@ main {
     gap: 1em;
 
     & > * {
+      flex-basis: 100%; //1 item per row
 
-    flex-basis: 100%; //1 item per row
+      @include landscape {
+        flex: 1 1 47%; // 2 items per row
+      }
 
-    @include landscape{
-      flex: 1 1 47%; // 2 items per row
-    }
-
-    @include tablet {
-      flex: 1 1 30%; // 3 items per row
-    }
+      @include tablet {
+        flex: 1 1 30%; // 3 items per row
+      }
     }
   }
 }
@@ -64,13 +63,21 @@ main {
 #footer {
   margin-top: auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120px;
+
   p {
-      text-align: center;
+    text-align: center;
+  }
+  i {
+    padding: 10px;
+    font-size: 1.5rem;
   }
 }
 
 .js-active {
-  border-bottom: .2rem solid red;
+  border-bottom: 0.2rem solid red;
 }
 
 .total {

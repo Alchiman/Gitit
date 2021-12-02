@@ -176,7 +176,7 @@ exports.userOrderHistory = userOrderHistory;
 const adminOrderHistory = function() {
   return db
     .query(
-      `SELECT * FROM orders WHERE (status = 'fulfilled' OR status = 'rejected' OR status = 'canceled') ORDER BY date_created DESC;`
+      `SELECT * FROM orders WHERE (status = 'fulfilled' OR status = 'rejected' OR status = 'cancelled') ORDER BY date_created DESC;`
     )
     .then(result => {
       return result.rows;
