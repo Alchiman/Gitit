@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 // Client facing scripts here
 $(document).ready(function() {
-  views_manager.navBarRender('navBarAdmin');
+  views_manager.navBarRender('navBarUser');
   getAllMenuItems().then(function(json) {
     menuItems.addMenuItems(json);
     views_manager.render("menuList");

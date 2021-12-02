@@ -1,7 +1,8 @@
 const $navbar_admin = $(`
   <img class="navbar__logo" src="./images/gitit-logo.png" alt="logo">
     <span class="navbar__item">Profile</span>
-    <span class="navbar__item">Home</span>
+    <span class="navbar__item">Menu</span>
+    <span class="navbar__item">Orders</span>
     <span class="navbar__item">
       <i class="fas fa-cart-arrow-down"></i>
       History

@@ -53,10 +53,12 @@ $(() => {
     });
   });
 
-  $("#admin-logout").on("click", function() {
+  $("#user-logout").on("click", function() {
     logOut().then(function(json) {
       console.log(json);
       $('#user-dropdown .dropbtn span').html('Log In');
+      views_manager.navBarRender('navBarUser');
+      views_manager.render('menuList');
     });
   });
 });

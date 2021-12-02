@@ -1,9 +1,9 @@
 $(() => {
   //set home as the active menu
   views_manager.navBarRender('navBarAdmin');
-  const $home = $(".navbar__item:nth-child(3)");
-  $home.addClass('js-active');
-  let active = $home;
+  const $orders = $(".navbar__item:nth-child(4)");
+  $orders.addClass('js-active');
+  let active = $orders;
 
   //Indicate which navigation menu is active
   $(".navbar__item").on("click", function() {
@@ -56,6 +56,8 @@ $(() => {
   $("#admin-logout").on("click", function() {
     logOut().then(function(json) {
       $('#admin-dropdown .dropbtn span').html('Log In');
+      views_manager.navBarRender('navBarUser');
+      views_manager.render('menuList');
       console.log(json);
     });
   });
