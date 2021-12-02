@@ -101,7 +101,12 @@ exports.acceptOrRejectOrder = acceptOrRejectOrder;
 const getPendingAcceptedOrders = function() {
   return db
     .query(
-      "SELECT * FROM orders WHERE status = 'pending' OR status = 'accepted' ORDER BY status DESC, date_created ; "
+      `SELECT orders.*, users.name AS user_name, users.phone AS user_phone, items.name AS item_name, order_line_items.quantity AS item_qty
+      FROM orders
+      JOIN users ON orders.user_id = users.id
+      JOIN order_line_items ON orders.id = order_line_items.order_id
+      JOIN items ON items.id = order_line_items.item_id
+      WHERE status = 'pending' OR status = 'accepted' ORDER BY status DESC, date_created ;`
     )
     .then(result => {
       return result.rows;
@@ -230,7 +235,9 @@ exports.createOrder = createOrder;
 const addOrderLineItems = function(order_id, itemList) {
   let queryString = `INSERT INTO order_line_items (item_id, order_id, quantity) VALUES`;
   const numberOfItems = Object.keys(itemList).length * 2;
-  let queryParams = Object.entries(itemList).flat().map(vals => parseInt(vals));
+  let queryParams = Object.entries(itemList)
+    .flat()
+    .map(vals => parseInt(vals));
   for (let i = 1; i <= numberOfItems; i += 2) {
     queryString += ` ($${i}, ${order_id}, $${i + 1}),`;
   }
@@ -273,7 +280,7 @@ const getUserInfo = function(id) {
 exports.getUserInfo = getUserInfo;
 
 const updateUserInfo = function(id, name, email, phone) {
-  console.log("HERE:",id, name, email, phone)
+  console.log("HERE:", id, name, email, phone);
   return db
 
     .query(
@@ -286,7 +293,7 @@ const updateUserInfo = function(id, name, email, phone) {
       [id, name, email, phone]
     )
     .then(result => {
-      console.log("ROWS:",result.rows)
+      console.log("ROWS:", result.rows);
       return result;
     })
     .catch(err => console.log(err.message));
@@ -307,7 +314,7 @@ const isAdmin = function(id) {
   return db
     .query(`SELECT is_admin  FROM users WHERE id = $1;`, [id])
     .then(result => {
-      console.log(result.rows[0])
+      console.log(result.rows[0]);
       return result.rows[0];
     })
     .catch(err => console.log(err.message));

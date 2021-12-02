@@ -8,3 +8,5 @@ CREATE TABLE items (
   img_url VARCHAR(255) NOT NULL,
   tag VARCHAR(255) NOT NULL
 );
+
+
