@@ -6,6 +6,20 @@ function getAllMenuItems() {
   });
 }
 
+// getItemPrices(itemList) {
+//   return $.ajax({
+//     url: "/users/prices",
+//     data:
+//   });
+// }
+
+function sendCustomerSms() {
+  return $.ajax({
+    method: "POST",
+    url: "/api/sms",
+  });
+}
+
 function acceptOrder() {
   return $.ajax({
     method: "POST",
@@ -37,11 +51,12 @@ function updateItem() {
   });
 }
 
-function deleteItem() {
+function deleteItem(data) {
+  console.log('data', data);
   return $.ajax({
     method: "POST",
     url: "/admins/menus/delete",
-    data: { name: "Alaska Roll" }
+    data: data
   });
 }
 
@@ -65,7 +80,7 @@ function addNewItem() {
     method: "POST",
     url: "/admins/menus/create",
     // name, price, description, img_url, tag
-    data: { name: "jop", price : 5, description: "in here", img_url: "im not areal url" ,tag : "this is my tag" }
+    data: { name: "jop", price: 5, description: "in here", img_url: "im not areal url", tag: "this is my tag" }
   });
 }
 
@@ -83,12 +98,12 @@ function getAdminHistory() {
   });
 }
 
-let myData = JSON.stringify({ userId: 1, orderCount: 11, itemList: { 3: 1, 4: 1 } });
-function createOrder() {
+//let myData = JSON.stringify({ userId: 1, orderCount: 11, itemList: { 3: 1, 4: 1 } });
+function createOrder(data) {
   return $.ajax({
     method: "POST",
     url: "/users/orders",
-    data: myData,
+    data: JSON.stringify(data),
     contentType: "application/json; charset=utf-8",
     dataType: 'json'
   });

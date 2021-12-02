@@ -3,7 +3,7 @@ $(() => {
     <section id="orders" class="container container--orders">
     <h1>Order Summary</h1>
     <div>
-      <table class="table--items">
+      <table id="summary" class="table--items">
         <tr>
           <td>
             <p>Item</p>
@@ -15,59 +15,23 @@ $(() => {
             <p>Price</p>
           </td>
         </tr>
-        <tr>
-          <td>
-            <p>Alaska Roll</p>
-          </td>
-          <td>
-            <select>
-              <option value="">0</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option selected="selected" value="">3</option>
-              <option value="">4</option>
-              <option value="">5</option>
-            </select>
-          </td>
-          <td>
-            <p>$22.00</p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p>Alaska Roll</p>
-          </td>
-          <td>
-            <select>
-              <option value="">0</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
-              <option selected="selected" value="">5</option>
-            </select>
-          </td>
-          <td>
-            <p>$22.00</p>
-          </td>
-        </tr>
       </table>
       <div class="total">
         <div class="price">
           <p>Subtotal</p>
-          <p>$66.00</p>
+          <p id="subtotal"></p>
         </div>
         <div class="price">
           <p>GST</p>
-          <p>$3.30</p>
+          <p id="gst"></p>
         </div>
         <div class="price">
           <p>PST</p>
-          <p>$4.62</p>
+          <p id="pst"></p>
         </div>
         <div class="price">
           <p>Total</p>
-          <p>$73.92</p>
+          <p id="total"></p>
         </div>
       </div>
       <button id="orders-button">
@@ -91,32 +55,48 @@ $(() => {
   orderSummary.addToCart = addToCart;
 
   const createItemReceipt = (name, price, quantity) => {
-    const $itemReceipt = $(`
+    return $(`
       <tr>
       <td>
-        <p>Alaska Roll</p>
+        <p>${name}</p>
       </td>
       <td>
-        <select>
-          <option value="">0</option>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option selected="selected" value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
-        </select>
+        ${quantity}
       </td>
       <td>
-        <p>$22.00</p>
+        <p>$${price}</p>
       </td>
     </tr>
     `);
   };
+
+  orderSummary.createItemReceipt = createItemReceipt;
 
   // const clearMenu = () => {
   //   $menuList.empty();
   // };
 
   // window.menuItems.clearMenu = clearMenu;
+
+  //not enough time to figure out how to dynamically make drop down numbers
+  //use this to do it when have time
+  // <tr>
+  //     <td>
+  //       <p>${name}</p>
+  //     </td>
+  //     <td>
+  //       <select>
+  //         <option value="">0</option>
+  //         <option value="">1</option>
+  //         <option value="">2</option>
+  //         <option selected="selected" value="">3</option>
+  //         <option value="">4</option>
+  //         <option value="">5</option>
+  //       </select>
+  //     </td>
+  //     <td>
+  //       <p>$22.00</p>
+  //     </td>
+  //   </tr>
 
 });

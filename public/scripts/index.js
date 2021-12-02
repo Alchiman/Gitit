@@ -3,6 +3,7 @@
 $(document).ready(function() {
   views_manager.navBarRender('navBarUser');
   getAllMenuItems().then(function(json) {
+    window.itemStock = json;
     menuItems.addMenuItems(json);
     views_manager.render("menuList");
 
@@ -16,7 +17,7 @@ $(document).ready(function() {
         .parent()
         .parent()
         .find("p")[0].innerText;
-      orderSummary.addToCart(itemName);
+      orderSummary.addToCart(getItemId(itemName));
       $("nav p").text(itemCount);
     });
   });
@@ -25,6 +26,24 @@ $(document).ready(function() {
   getAllMenuItems().then(function(json) {
     adminMenuItems.adminAddMenuItems(json);
     views_manager.render("adminMenuList");
+
+    $(".delete-button").on("click", function() {
+      itemManager.selectedItem = $(this)
+        .parent()
+        .parent()
+        .find("p")[0].innerText;
+      console.log(itemManager.selectedItem);
+      views_manager.overlay("itemDeletePopup");
+    });
+
+    $(".card__footer button").on("click", function() {
+      views_manager.overlay("itemEditPopup");
+    });
+
+    $(".add-button").on("click", function() {
+      views_manager.overlay("createItemForm");
+    });
+    views_manager.render("menuList");
   });
 
   views_manager.navBarRender('navBarUser');

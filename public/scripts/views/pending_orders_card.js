@@ -16,16 +16,14 @@ const $pendingOrders = $(`
             <td>item qty</td>
           </tr>
         </table>
-
         <footer>
-          <button>accept</button>
-          <button>rejected</button>
+          <button id="accept-pending">accept</button>
+          <button id="reject-pending">rejected</button>
         </footer>
-      </article>
-
-
-
+  </article>
 `);
+
+window.$pendingOrders = $pendingOrders;
 
 // const pendingOrders = order => {
 //   const {

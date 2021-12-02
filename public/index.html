@@ -77,24 +77,56 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
   </head>
 
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar--dark navbar--fixed"></nav>
-    <!-- Main Content -->
-    <main id="main-content">
-      <div class="overlay"></div>
-      <div class="popup-window">
-        <p>
-          THE ORDER WAS REJECTED YOU WILL BE REDIRECTED TO ORDERS PAGE IN ....
-        </p>
-      </div>
-    </main>
-    <!-- Footer -->
-    <footer id="footer">
-      <p>
-        <i class="fab fa-instagram"></i> <i class="fab fa-facebook-f"> </i
-        ><i class="fab fa-twitter"></i>
-      </p>
+  <!-- App JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <script type="text/javascript" src="/scripts/network.js"></script>
+
+  <script type="text/javascript" src="/scripts/views_controller.js"></script>
+  <script type="text/javascript" src="/scripts/views/navbar_user.js"></script>
+
+  <script type="text/javascript" src="/scripts/models/navbar_user.js"></script>
+  <script type="text/javascript" src="/scripts/views/navbar_admin.js"></script>
+
+  <script type="text/javascript" src="/scripts/models/navbar_admin.js"></script>
+  <script type="text/javascript" src="/scripts/views/admin_menu_list.js"></script>
+  <script type="text/javascript" src="/scripts/views/menu_list.js"></script>
+  <script type="text/javascript" src="/scripts/helpers/getItemId.js"></script>
+  <script type="text/javascript" src="/scripts/helpers/createReceipt.js"></script>
+  <script type="text/javascript" src="/scripts/views/admin_history.js"></script>
+  <script type="text/javascript" src="/scripts/views/rejected_message_form.js"></script>
+  <script type="text/javascript" src="/scripts/views/item_delete_popup.js"></script>
+  <script type="text/javascript" src="/scripts/views/item_edit_popup.js"></script>
+  <script type="text/javascript" src="/scripts/views/create_item_form.js"></script>
+  <script type="text/javascript" src="/scripts/views/pending_orders_card.js"></script>
+  <script type="text/javascript" src="/scripts/views/rejected_popup.js"></script>
+  <script type="text/javascript" src="/scripts/views/order_accepted_popup.js"></script>
+  <script type="text/javascript" src="/scripts/models/pending_orders_card.js"></script>
+  <script type="text/javascript" src="/scripts/models/menu_list.js"></script>
+  <script type="text/javascript" src="/scripts/models/admin_menu_list.js"></script>
+  <script type="text/javascript" src="/scripts/models/order_summary.js"></script>
+  <script type="text/javascript" src="/scripts/models/profile.js"></script>
+  <script type="text/javascript" src="/scripts/models/order_redirect.js"></script>
+  <script type="text/javascript" src="/scripts/models/order_receipt.js"></script>
+  <script type="text/javascript" src="/scripts/index.js"></script>
+  <script type="text/javascript" src="/scripts/helpers/loadListeners.js"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar--dark navbar--fixed">
+  </nav>
+  <!-- Main Content -->
+  <main id="main-content">
+  </main>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <p>Copyright © 2021 | Gitit | All Rights Reserved</p>
+    </div>
+  </footer>
+</body>
 
       <div class="container">
         <p>Copyright © 2021 | Gitit | All Rights Reserved</p>

@@ -1,18 +1,27 @@
 const $createItemForm = $(`
-<div class="container-forms padding-s flex flex-column align-center">
-  <input type="text" placeholder="TITLE">
-  <input type="text" placeholder="PRICE">
-  <input type="text" placeholder="IMG_URL">
-  <select>
-    <option value="">Food</option>
-    <option value="">Drinks</option>
-    <option value="">Dessert</option>
-    <option selected="selected" value="">Appetizer</option>
-    <option value="">Special</option>
-    <option value="">To go</option>
-  </select>
-  <textarea name="description" cols="30" rows="5"></textarea>
-  <button>CREATE ITEM</button>
-  </div>
+<div class="overlay"></div>
+      <div class="popup-window">
+        <form action="" method="POST">
+          <input type="text" placeholder="title" />
+          <input type="text" placeholder="price" />
+          <input type="url" placeholder="url" />
+          <select>
+            <option value="">Food</option>
+            <option value="">Drinks</option>
+            <option value="">Dessert</option>
+            <option selected="selected" value="">Appetizer</option>
+            <option value="">Special</option>
+            <option value="">To go</option>
+          </select>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="description"
+          ></textarea>
+          <button>Create</button>
+        </form>
+      </div>
   `);
 window.$createItemForm = $createItemForm;

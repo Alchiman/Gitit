@@ -3,7 +3,7 @@ const $itemEditPopup = $(`
       <div class="popup-window">
         <form action="" method="POST">
           <input type="text" placeholder="title" />
-          <input type="number" placeholder="price" />
+          <input type="text" placeholder="price" />
           <input type="url" placeholder="url" />
           <select>
             <option value="">Food</option>

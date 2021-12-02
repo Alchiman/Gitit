@@ -1,11 +1,18 @@
 const $itemDeletePopup = $(`
-
 <div class="overlay"></div>
-<div class="popup-window">
+<div id="item-delete-popup" class="popup-window">
 <p>ARE YOU SURE
 YOU WANT TO DELETE</p>
     <button class="popup-button">delete</button>
 </div>
 `);
 
+$itemDeletePopup.find('button').on("click", function() {
+  const deleteThis = itemManager.selectedItem;
+  deleteItem({ name: deleteThis }).then(() => {
+    $itemDeletePopup.detach();
+    adminMenuItems.fetchAdminItems();
+  });
+  // $itemDeletePopup.detach(); //don't do this when actually using form
+});
 window.$itemDeletePopup = $itemDeletePopup;

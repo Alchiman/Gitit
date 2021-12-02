@@ -2,8 +2,7 @@ const $orderAcceptedPopup = $(`
 <div class="overlay"></div>
 <div class="popup-window">
   <form action="" method="POST">
-    <textarea name="" id="" cols="30" rows="10">
-Default value...</textarea
+    <textarea placeholder="Default value..."cols="30" rows="10"></textarea
     >
     <button class="popup-button">accept</button>
   </form>

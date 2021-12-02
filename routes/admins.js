@@ -97,6 +97,7 @@ module.exports = db => {
   router.post("/menus/delete", (req, res) => {
     if (req.session.isAdmin) {
       const { name } = req.body;
+      console.log(name);
       db.deleteItem(name)
         .then(data => {
           return res.send({ data });

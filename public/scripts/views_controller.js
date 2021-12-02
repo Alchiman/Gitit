@@ -5,6 +5,39 @@ $(() => {
   const $main = $('#main-content');
   const $nav = $('nav');
   window.views_manager = {};
+  window.itemManager = {};
+  // window.twilio = {};
+
+  window.views_manager.overlay = function(component) {
+    switch (component) {
+      case 'orderAcceptedPopup':
+        $orderAcceptedPopup.appendTo($main);
+        break;
+      case 'rejectedPopup':
+        $rejectedPopup.appendTo($main);
+        break;
+      case 'rejectedMessageForm':
+        $rejectedMessageForm.appendTo($main);
+        break;
+      case 'itemDeletePopup':
+        $itemDeletePopup.appendTo($main);
+        break;
+      case 'itemEditPopup':
+        $itemEditPopup.appendTo($main);
+        break;
+      case 'createItemForm':
+        $createItemForm.appendTo($main);
+        break;
+      case 'error': {
+        const $error = $(`<p>${arguments[1]}</p>`);
+        $error.appendTo('body');
+        setTimeout(() => {
+          $error.remove();
+        }, 2000);
+        break;
+      }
+    }
+  };
 
   window.views_manager.navBarRender = function(component) {
     $navbar_user.detach();
@@ -38,6 +71,13 @@ $(() => {
     $adminHistory.detach();
     $createItemForm.detach();
     $adminMenuList.detach();
+    $pendingOrders.detach();
+    $orderAcceptedPopup.detach();
+    $rejectedPopup.detach();
+    $rejectedMessageForm.detach();
+    $itemDeletePopup.detach();
+    $itemEditPopup.detach();
+    $createItemForm.detach();
 
     switch (component) {
       case 'menuList':
@@ -63,6 +103,27 @@ $(() => {
         break;
       case 'adminMenuList':
         $adminMenuList.appendTo($main);
+        break;
+      case 'pendingOrders':
+        $pendingOrders.appendTo($main);
+        break;
+      case 'orderAcceptedPopup':
+        $orderAcceptedPopup.appendTo($main);
+        break;
+      case 'rejectedPopup':
+        $rejectedPopup.appendTo($main);
+        break;
+      case 'rejectedMessageForm':
+        $rejectedMessageForm.appendTo($main);
+        break;
+      case 'itemDeletePopup':
+        $itemDeletePopup.appendTo($main);
+        break;
+      case 'itemEditPopup':
+        $itemEditPopup.appendTo($main);
+        break;
+      case 'createItemForm':
+        $createItemForm.appendTo($main);
         break;
       case 'error': {
         const $error = $(`<p>${arguments[1]}</p>`);
