@@ -1,9 +1,11 @@
-const $rejected_message_form = $(`
-<form class="rejected-box">
-<input type="text" placeholder= "why?" id="rejected-textbox"><br>
-<input type="submit" value="reject" id="rejected-button">
-
-  </form>
- 
+const $rejectedMessageForm = $(`
+<div class="overlay"></div>
+  <div id="rejected-message-form" class="popup-window">
+    <form action="" method="POST">
+      <textarea placeholder="Why?"cols="30" rows="10"></textarea
+      >
+      <button class="popup-button">accept</button>
+    </form>
+  </div>
   `);
-window.$rejected_message_form = $rejected_message_form;
+window.$rejectedMessageForm = $rejectedMessageForm;

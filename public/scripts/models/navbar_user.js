@@ -12,7 +12,11 @@ $(() => {
     } else if ($(this).text() === 'Home') {
       views_manager.render('menuList');
     } else {
-      $(".container--card").detach();
+      let dataObject = { orderCount: 1, itemList: window.orderSummary.cart };
+      createReceipt();
+      createOrder(dataObject).then(function(json) {
+        console.log(json);
+      });
       views_manager.render('orderSummary');
     }
 

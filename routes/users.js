@@ -60,7 +60,7 @@ module.exports = db => {
   });
   // get request for user order history
   router.get("/orders", (req, res) => {
-    const userId = req.session.user_id;
+    const userId = req.session.userId;
     db.userOrderHistory(userId)
       .then(data => {
         return res.json({ data });
@@ -72,7 +72,8 @@ module.exports = db => {
 
   // user palces and order
   router.post("/orders", (req, res) => {
-    const { userId, orderCount, itemList } = req.body;
+    const { userId } = req.session.userId;
+    const { orderCount, itemList } = req.body;
     console.log("itemList", itemList);
     db.createOrder(userId, orderCount)
       .then(data => {

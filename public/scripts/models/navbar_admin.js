@@ -13,6 +13,8 @@ $(() => {
       views_manager.render('adminMenuList');
     } else if ($(this).text() === 'History') {
       views_manager.render('adminHistory');
+    } else if ($(this).text() === 'Orders') {
+      views_manager.render('pendingOrders');
     }
 
     active.removeClass('js-active');

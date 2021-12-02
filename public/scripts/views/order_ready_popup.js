@@ -7,4 +7,4 @@ TO THE ORDERS PAGE IN 3 SECONDS</p>
     <button class="popup-button">undo</button>
 </div>
 `);
-window.$orderReadyPopup = $orderAcceptedPopup;
+window.$orderReadyPopup = $orderReadyPopup;

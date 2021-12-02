@@ -1,11 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const { sendSms } = require("../server/send_sms");
 
 module.exports = db => {
   //DON'T DELETE YET
   router.get("/", (req, res) => {
     console.log(req.session.userId);
     db.getAllItems()
+      .then(data => {
+        return res.send(data);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.post("/sms", (req, res) => {
+    console.log(req.session.userId);
+    sendSms()
       .then(data => {
         return res.send(data);
       })

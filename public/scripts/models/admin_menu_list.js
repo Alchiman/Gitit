@@ -2,7 +2,6 @@
 $(() => {
   const $adminMenuList = $(`
     <section id ="menu-items" class="container container--card">
-    <button class="add-button"><i class="fas fa-plus"></i></button>
     </section>
   `);
   window.$adminMenuList = $adminMenuList;
@@ -16,6 +15,7 @@ $(() => {
 
   const adminAddMenuItems = (items) => {
     clearMenu();
+    $adminMenuList.append($(`<button class="add-button"><i class="fas fa-plus"></i></button>`));
     for (const item in items) {
       const menuItem = createAdminMenuItem(items[item]);
       $adminMenuList.append(menuItem);
