@@ -8,7 +8,13 @@ $(() => {
   //Indicate which navigation menu is active
   $(".navbar__item").on("click", function() {
     if ($(this).text() === 'Profile') {
-      views_manager.render('profile');
+      getUserInfo().then((data) => {
+        const { email, name, phone } = data.user[0];
+        $profile.find('input[name="name"]').val(name);
+        $profile.find('input[name="phone"]').val(phone);
+        $profile.find('input[name="email"]').val(email);
+        views_manager.render('profile');
+      });
     } else if ($(this).text() === 'Home') {
       views_manager.render('menuList');
     } else {

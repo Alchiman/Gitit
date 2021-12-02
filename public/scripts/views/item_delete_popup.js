@@ -12,7 +12,7 @@ $itemDeletePopup.find('button').on("click", function() {
   deleteItem({ name: deleteThis }).then(() => {
     $itemDeletePopup.detach();
     adminMenuItems.fetchAdminItems();
+    menuItems.fetchUserItems();
   });
-  // $itemDeletePopup.detach(); //don't do this when actually using form
 });
 window.$itemDeletePopup = $itemDeletePopup;

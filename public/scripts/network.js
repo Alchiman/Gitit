@@ -123,3 +123,10 @@ function logOut() {
     url: "/api/logout"
   });
 }
+
+function getUserInfo() {
+  return $.ajax({
+    method: "GET",
+    url: "/users/profile",
+  });
+}
