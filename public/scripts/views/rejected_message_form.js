@@ -1,4 +1,4 @@
-const $rejected_message_form = $(`
+const $rejectedMessageForm = $(`
 <div class="overlay"></div>
 <div class="popup-window">
   <form>
@@ -14,4 +14,4 @@ const $rejected_message_form = $(`
 </div>
 
   `);
-window.$rejected_message_form = $rejected_message_form;
+window.$rejectedMessageForm = $rejectedMessageForm;
