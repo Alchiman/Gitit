@@ -24,7 +24,7 @@ function acceptOrder() {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/accept",
-    data: { status: "accepted", order_no: 1 }
+    data: { status: "accepted", order_no:  }
   });
 }
 
@@ -88,7 +88,7 @@ function fulfillOrder() {
   return $.ajax({
     method: "POST",
     url: "/admins/orders/fulfill",
-    data: { order_no: 1 }
+    data: { status: 'fulfilled', order_no: 1}
   });
 }
 
@@ -96,6 +96,13 @@ function getAdminHistory() {
   return $.ajax({
     url: "/admins/history"
   });
+}
+
+function getUserPendingAcceptedOrder(){
+  return $.ajax({
+    url: "/users/orders",
+    data: {userId}
+  })
 }
 
 //let myData = JSON.stringify({ userId: 1, orderCount: 11, itemList: { 3: 1, 4: 1 } });

@@ -116,6 +116,25 @@ const getPendingAcceptedOrders = function() {
 
 exports.getPendingAcceptedOrders = getPendingAcceptedOrders;
 
+const getUserPendingAcceptedOrder = function(userId) {
+  return db
+    .query(
+      `SELECT orders.*, users.name AS user_name, users.phone AS user_phone, items.name AS item_name, order_line_items.quantity AS item_qty
+      FROM orders
+      JOIN users ON orders.user_id = users.id
+      JOIN order_line_items ON orders.id = order_line_items.order_id
+      JOIN items ON items.id = order_line_items.item_id
+      WHERE (status = 'pending' OR status = 'accepted') AND user_id = $1 ORDER BY status DESC, date_created ;`,
+      [userId]
+    )
+    .then(result => {
+      return result.rows;
+    })
+    .catch(err => console.log(err.message));
+};
+
+exports.getUserPendingAcceptedOrder = getUserPendingAcceptedOrder;
+
 const cancelOrder = function(order_no) {
   return db
     .query(
