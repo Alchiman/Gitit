@@ -3,11 +3,7 @@ const $navbar_admin = $(`
     <span class="navbar__item">Profile</span>
     <span class="navbar__item">Menu</span>
     <span class="navbar__item">Orders</span>
-    <span class="navbar__item">
-      <i class="fas fa-cart-arrow-down"></i>
-      History
-      <p></p>
-    </span>
+    <span class="navbar__item">History</span>
     <div id='admin-dropdown' class="dropdown">
       <button class="dropbtn"><span>Log In</span>
         <i class="fa fa-caret-down"></i>

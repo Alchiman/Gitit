@@ -35,6 +35,9 @@ $(() => {
     $profile.detach();
     $orderRedirect.detach();
     $orderReceipt.detach();
+    $adminHistory.detach();
+    $createItemForm.detach();
+    $adminMenuList.detach();
 
     switch (component) {
       case 'menuList':
@@ -51,6 +54,15 @@ $(() => {
         break;
       case 'orderReceipt':
         $orderReceipt.appendTo($main);
+        break;
+      case 'adminHistory':
+        $adminHistory.appendTo($main);
+        break;
+      case 'createItemForm':
+        $createItemForm.appendTo($main);
+        break;
+      case 'adminMenuList':
+        $adminMenuList.appendTo($main);
         break;
       case 'error': {
         const $error = $(`<p>${arguments[1]}</p>`);

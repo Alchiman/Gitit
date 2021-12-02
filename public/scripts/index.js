@@ -20,7 +20,16 @@ $(document).ready(function() {
       $("nav p").text(itemCount);
     });
   });
-  addNewItem()
+
+  views_manager.navBarRender('navBarAdmin');
+  getAllMenuItems().then(function(json) {
+    adminMenuItems.adminAddMenuItems(json);
+    views_manager.render("adminMenuList");
+  });
+
+  views_manager.navBarRender('navBarUser');
+  views_manager.render("menuList");
+  // addNewItem()
   // createOrder().then(function(json) {
   //   console.log(json);
   // });
