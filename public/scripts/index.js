@@ -28,6 +28,11 @@ $(document).ready(function() {
     views_manager.render("adminMenuList");
 
     $(".delete-button").on("click", function() {
+      itemManager.selectedItem = $(this)
+        .parent()
+        .parent()
+        .find("p")[0].innerText;
+      console.log(itemManager.selectedItem);
       views_manager.overlay("itemDeletePopup");
     });
 
@@ -38,6 +43,7 @@ $(document).ready(function() {
     $(".add-button").on("click", function() {
       views_manager.overlay("createItemForm");
     });
+    views_manager.render("menuList");
   });
 
   views_manager.navBarRender('navBarUser');

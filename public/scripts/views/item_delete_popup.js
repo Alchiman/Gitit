@@ -7,4 +7,12 @@ YOU WANT TO DELETE</p>
 </div>
 `);
 
+$itemDeletePopup.find('button').on("click", function() {
+  const deleteThis = itemManager.selectedItem;
+  deleteItem({ name: deleteThis }).then(() => {
+    $itemDeletePopup.detach();
+    adminMenuItems.fetchAdminItems();
+  });
+  // $itemDeletePopup.detach(); //don't do this when actually using form
+});
 window.$itemDeletePopup = $itemDeletePopup;

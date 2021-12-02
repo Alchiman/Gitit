@@ -51,11 +51,12 @@ function updateItem() {
   });
 }
 
-function deleteItem() {
+function deleteItem(data) {
+  console.log('data', data);
   return $.ajax({
     method: "POST",
     url: "/admins/menus/delete",
-    data: { name: "Alaska Roll" }
+    data: data
   });
 }
 

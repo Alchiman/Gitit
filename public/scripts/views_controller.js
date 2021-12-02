@@ -5,6 +5,7 @@ $(() => {
   const $main = $('#main-content');
   const $nav = $('nav');
   window.views_manager = {};
+  window.itemManager = {};
   // window.twilio = {};
 
   window.views_manager.overlay = function(component) {

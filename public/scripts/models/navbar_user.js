@@ -12,12 +12,19 @@ $(() => {
     } else if ($(this).text() === 'Home') {
       views_manager.render('menuList');
     } else {
-      let dataObject = { orderCount: 1, itemList: window.orderSummary.cart };
-      createReceipt();
-      createOrder(dataObject).then(function(json) {
-        console.log(json);
-      });
-      views_manager.render('orderSummary');
+      let receipt = createReceipt();
+      if (receipt) {
+        let dataObject = { orderCount: 1, itemList: window.orderSummary.cart };
+        createOrder(dataObject).then(function(json) {
+          console.log(json);
+          views_manager.render('orderSummary');
+          //do bottom code when they press placeholder button
+          // window.orderSummary.cart = {};
+          // $("nav p").text(0);
+        });
+      } else {
+        return false;
+      }
     }
 
     active.removeClass('js-active');
