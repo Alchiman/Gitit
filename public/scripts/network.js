@@ -100,6 +100,7 @@ function getAdminHistory() {
 
 function getUserPendingAcceptedOrder(){
   return $.ajax({
+    method: "GET",
     url: "/users/orders",
     data: {userId}
   })
