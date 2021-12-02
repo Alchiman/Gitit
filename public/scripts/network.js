@@ -60,6 +60,14 @@ function updateUserInfo() {
     data: { id: 1, name: "Siul", email: "abc@abc.com", phone: "1212121" }
   });
 }
+function addNewItem() {
+  return $.ajax({
+    method: "POST",
+    url: "/admins/menus/create",
+    // name, price, description, img_url, tag
+    data: { name: "jop", price : 5, description: "in here", img_url: "im not areal url" ,tag : "this is my tag" }
+  });
+}
 
 function fulfillOrder() {
   return $.ajax({
