@@ -8,10 +8,20 @@ $(() => {
   //Indicate which navigation menu is active
   $(".navbar__item").on("click", function() {
     if ($(this).text() === 'Profile') {
-      views_manager.render('profile');
+      getUserInfo().then((data) => {
+        const { email, name, phone } = data.user[0];
+        $profile.find('input[name="name"]').val(name);
+        $profile.find('input[name="phone"]').val(phone);
+        $profile.find('input[name="email"]').val(email);
+        views_manager.render('profile');
+      });
     } else if ($(this).text() === 'Menu') {
       views_manager.render('adminMenuList');
     } else if ($(this).text() === 'History') {
+      getAdminHistory().then((data) => {
+        console.log(data.items);
+        adminHistory.addHistoryItems(data.items);
+      });
       views_manager.render('adminHistory');
     } else if ($(this).text() === 'Orders') {
       getAdminPendingAcceptedOrders().then((data) => {

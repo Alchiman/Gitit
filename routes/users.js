@@ -22,7 +22,7 @@ module.exports = db => {
         if (isAdmin === true) {
           console.log("is admin:", isAdmin);
           console.log("IM AN ADMIN");
-          res.redirect("admin/orders");
+          // res.redirect("admin/orders");
           res.json({ user });
         }
         //if not what the user will see
@@ -39,6 +39,7 @@ module.exports = db => {
   router.post("/profile/edit", (req, res) => {
     const id = req.session.userId;
     const { name, email, phone } = req.body;
+    console.log("name:", name, "email:", email, "phone", phone);
     db.updateUserInfo(Number(id), name, email, phone)
       .then(data => {
         return res.json({ data });

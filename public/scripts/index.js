@@ -27,14 +27,14 @@ $(document).ready(function() {
     adminMenuItems.adminAddMenuItems(json);
     views_manager.render("adminMenuList");
 
-    $(".delete-button").on("click", function() {
-      itemManager.selectedItem = $(this)
-        .parent()
-        .parent()
-        .find("p")[0].innerText;
-      console.log(itemManager.selectedItem);
-      views_manager.overlay("itemDeletePopup");
-    });
+    // $(".delete-button").on("click", function() {
+    //   itemManager.selectedItem = $(this)
+    //     .parent()
+    //     .parent()
+    //     .find("p")[0].innerText;
+    //   console.log(itemManager.selectedItem);
+    //   views_manager.overlay("itemDeletePopup");
+    // });
 
     $(".card__footer button").on("click", function() {
       views_manager.overlay("itemEditPopup");

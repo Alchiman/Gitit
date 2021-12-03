@@ -1,8 +1,76 @@
-const $adminHistory = $(`
-  <div>
-    <div class="container-cards flex flex-column space-between">
+// const $adminHistory = $(`
+//   <div>
+//     <div class="container-cards flex flex-column space-between">
+//       <div>
+//         Order Id
+//         <div>
+//           <div class="flex space-between">
+//             <p class="">item 1</p>
+//             <p>$1</p>
+//           </div>
+//           <div class="flex space-between">
+//             <p class="">item2</p>
+//             <p>$2</p>
+//           </div>
+//           <div class="flex space-between">
+//             <p class="">item3</p>
+//             <p>$3</p>
+//           </div>
+//           <div class="flex flex-end">
+//             <p class="">TOTAL $</p>
+//             <p></p>
+//           </div>
+//         </div>
+//       </div>
+//       <div class="flex space-between align-center">
+//         <div>
+//           <p>Start Time Stamp</p>
+//           <p>NULL</p>
+//         </div>
+//         <p>Rejected</p>
+//       </div>
+//     </div>
+//     <div class="container-cards flex flex-column space-between">
+//       <div>
+//         Order Id
+//         <div>
+//           <div class="flex space-between">
+//             <p class="">item 1</p>
+//             <p>$1</p>
+//           </div>
+//           <div class="flex space-between">
+//             <p class="">item2</p>
+//             <p>$2</p>
+//           </div>
+//           <div class="flex space-between">
+//             <p class="">item3</p>
+//             <p>$3</p>
+//           </div>
+//           <div class="flex flex-end">
+//             <p class="">TOTAL $</p>
+//             <p></p>
+//           </div>
+//         </div>
+//       </div>
+//       <div class="flex space-between align-center">
+//         <div>
+//           <p>Start Time Stamp</p>
+//           <p>Fulfilled Time Stamp</p>
+//         </div>
+//         <p>Rejected</p>
+//       </div>
+//     </div>
+//   </div>
+//   `);
+// window.$adminHistory = $adminHistory;
+
+
+const createAdminHistory = history => {
+  const { id, date_created, date_finished, order_number, status, user_id } = history;
+  return $(`
+  <div class="container-cards flex flex-column space-between">
       <div>
-        Order Id
+        ${id}
         <div>
           <div class="flex space-between">
             <p class="">item 1</p>
@@ -30,36 +98,5 @@ const $adminHistory = $(`
         <p>Rejected</p>
       </div>
     </div>
-    <div class="container-cards flex flex-column space-between">
-      <div>
-        Order Id
-        <div>
-          <div class="flex space-between">
-            <p class="">item 1</p>
-            <p>$1</p>
-          </div>
-          <div class="flex space-between">
-            <p class="">item2</p>
-            <p>$2</p>
-          </div>
-          <div class="flex space-between">
-            <p class="">item3</p>
-            <p>$3</p>
-          </div>
-          <div class="flex flex-end">
-            <p class="">TOTAL $</p>
-            <p></p>
-          </div>
-        </div>
-      </div>
-      <div class="flex space-between align-center">
-        <div>
-          <p>Start Time Stamp</p>
-          <p>Fulfilled Time Stamp</p>
-        </div>
-        <p>Rejected</p>
-      </div>
-    </div>
-  </div>
   `);
-window.$adminHistory = $adminHistory;
+};

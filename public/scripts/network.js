@@ -80,11 +80,11 @@ function rejectOrder(status, orderNo) {
   });
 }
 
-function updateUserInfo(id, name, email, phone) {
+function updateUserInfo(name, email, phone) {
   return $.ajax({
     method: "POST",
-    url: "/users/profile/1/edit",
-    data: { id: id, name: name, email: email, phone: phone }
+    url: 'users/profile/edit',
+    data: { name: name, email: email, phone: phone }
   });
 }
 function addNewItem(name, price, description, img_url, tag) {

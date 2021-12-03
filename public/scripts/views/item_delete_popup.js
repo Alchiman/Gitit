@@ -11,8 +11,8 @@ $itemDeletePopup.find('button').on("click", function() {
   const deleteThis = itemManager.selectedItem;
   deleteItem({ name: deleteThis }).then(() => {
     $itemDeletePopup.detach();
-    adminMenuItems.fetchAdminItems();
     menuItems.fetchUserItems();
+    adminMenuItems.fetchAdminItems();
   });
 });
 window.$itemDeletePopup = $itemDeletePopup;

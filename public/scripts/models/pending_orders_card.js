@@ -54,6 +54,7 @@ $(() => {
       });
       $pendingOrders.find('footer').filter(':last').find('button').filter(':last').on("click", function() {
         views_manager.overlay("rejectedMessageForm");
+        // window.currentOrder = 1; WORK ON THIS AFTER FIXING OTHER THING.
       });
     }
   };
