@@ -245,6 +245,7 @@ const getOrderCount = function() {
 exports.getOrderCount = getOrderCount;
 
 const createOrder = function(user_id, order_count) {
+  console.log('userid', user_id);
   const date = new Date();
   let order_no = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
     .toISOString()
