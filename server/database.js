@@ -184,6 +184,7 @@ const fulfillOrder = function(order_no) {
 };
 exports.fulfillOrder = fulfillOrder;
 
+// it seems like this query is not being used
 const getActiveOrders = function() {
   return db
     .query(`SELECT * FROM orders WHERE status = 'accepted';`)
@@ -197,11 +198,24 @@ exports.getActiveOrders = getActiveOrders;
 const userOrderHistory = function(user_id) {
   return db
     .query(
-      `SELECT * FROM orders WHERE (status = 'fulfilled' or status = 'rejected' or status = 'canceled') AND user_id = $1 ORDER BY date_created DESC;`,
+      `SELECT orders.*, users.name AS user_name, users.phone AS user_phone, items.name AS item_name, order_line_items.quantity AS item_qty
+      FROM orders
+      JOIN users ON orders.user_id = users.id
+      JOIN order_line_items ON orders.id = order_line_items.order_id
+      JOIN items ON items.id = order_line_items.item_id
+      WHERE (status = 'rejected' OR status = 'canceled' OR status = 'fulfilled') AND user_id = $1 ORDER BY status DESC, date_created ;`,
       [user_id]
     )
     .then(result => {
-      return result.rows;
+      let orders = {};
+      for (const order of result.rows) {
+        if (!orders[order.id]) {
+          orders[order.id] = [order];
+        } else {
+          orders[order.id].push(order);
+        }
+      }
+      return orders;
     })
     .catch(err => console.log(err.message));
 };
@@ -211,10 +225,23 @@ exports.userOrderHistory = userOrderHistory;
 const adminOrderHistory = function() {
   return db
     .query(
-      `SELECT * FROM orders WHERE (status = 'fulfilled' OR status = 'rejected' OR status = 'cancelled') ORDER BY date_created DESC;`
+      `SELECT orders.*, users.name AS user_name, users.phone AS user_phone, items.name AS item_name, order_line_items.quantity AS item_qty
+      FROM orders
+      JOIN users ON orders.user_id = users.id
+      JOIN order_line_items ON orders.id = order_line_items.order_id
+      JOIN items ON items.id = order_line_items.item_id
+      WHERE (status = 'rejected' OR status = 'fulfilled' OR status = 'canceled') ORDER BY date_created ;`
     )
     .then(result => {
-      return result.rows;
+      let orders = {};
+      for (const order of result.rows) {
+        if (!orders[order.id]) {
+          orders[order.id] = [order];
+        } else {
+          orders[order.id].push(order);
+        }
+      }
+      return orders;
     })
     .catch(err => console.log(err.message));
 };
@@ -287,6 +314,7 @@ const addOrderLineItems = function(order_id, itemList) {
 };
 exports.addOrderLineItems = addOrderLineItems;
 
+// it seems like this function is not being used
 const getOrder = function(order_no) {
   return db
     .query(`SELECT * FROM orders WHERE order_number = $1;`, [order_no])
