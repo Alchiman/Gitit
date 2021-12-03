@@ -75,9 +75,13 @@ $(() => {
   $orderSummary.find('#orders-button').on("click", function() {
     const message = "You order has been placed, the restuaurant owner will notify you of your estimated pick up time in a short moment.";
     const messageForOwner = "Hello shop owner, you have a new order!";
-    sendCustomerSms(3, message); // change to 1 for customer
-    // sendCustomerSms(2, messageForOwner); // change to 2 for the owner
+    sendCustomerSms(2, messageForOwner); // change to 1 for owner
+    sendCustomerSms(1, message); // change to 2 for the cuistomer
     setTimeout(() => {
+      // getUserPendingAcceptedOrder().then((data) => {
+      //   console.log(data);
+      // });
+      orderReceipt.addReceiptItem(window.justPlacedOrder);
       views_manager.render('orderReceipt');
     }, 1000);
   });

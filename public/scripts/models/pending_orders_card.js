@@ -67,7 +67,7 @@ $(() => {
           console.log(window.activeOrder);
           window.myTimeout = setTimeout(() => {
             fulfillOrder(window.activeOrder).then(() => {
-              sendCustomerSms(3, "Hello customer! Your order is now ready. Please pick it up soon!");
+              sendCustomerSms(1, "Hello customer! Your order is now ready. Please pick it up soon!");
               return getAdminPendingAcceptedOrders();
             })
               .then((data) => {

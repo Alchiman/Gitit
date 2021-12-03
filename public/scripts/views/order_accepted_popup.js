@@ -15,7 +15,7 @@ $orderAcceptedPopup.find('button').on("click", function(e) {
     return getAdminPendingAcceptedOrders();
   })
     .then((data) => {
-      sendCustomerSms(3, $orderAcceptedPopup.find('textarea').val()); // change from 3 to 1 to send to customer
+      sendCustomerSms(1, $orderAcceptedPopup.find('textarea').val()); // change from 3 to 2 to send to customer
       pendingOrders.addOrderItems(data.items);
       views_manager.render('pendingOrders');
     });

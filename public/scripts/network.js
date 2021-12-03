@@ -161,11 +161,10 @@ function getUserInfo() {
   });
 }
 
-function getUserPendingAcceptedOrder(user_id) {
+function getUserPendingAcceptedOrder() {
   return $.ajax({
     method: "GET",
-    url: "/users/orders",
-    data: { userId: user_id }
+    url: "/users/orders"
   });
 }
 

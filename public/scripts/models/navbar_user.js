@@ -23,7 +23,8 @@ $(() => {
         getOrderCount().then((count) => {
           let dataObject = { orderCount: count.data.count, itemList: window.orderSummary.cart };
           createOrder(dataObject).then(function(json) {
-            console.log(json);
+            console.log('this is the ', json);
+            window.justPlacedOrder = json;
             views_manager.render('orderSummary');
             //do bottom code when they press placeholder button
             // window.orderSummary.cart = {};

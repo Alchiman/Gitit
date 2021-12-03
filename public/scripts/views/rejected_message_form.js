@@ -18,7 +18,7 @@ const $rejectedMessageForm = $(`
 $rejectedMessageForm.find('button').on("click", function(e) {
   e.preventDefault();
   rejectOrder('rejected', window.activeOrder).then(() => {
-    sendCustomerSms(3, $rejectedMessageForm.find('textarea').val());
+    sendCustomerSms(1, $rejectedMessageForm.find('textarea').val());
     return getAdminPendingAcceptedOrders();
   })
     .then((data) => {
