@@ -18,9 +18,9 @@ const $acceptOrder = $(`
         </table>
 
         <footer>
-          <button>ready</button>
+          <button class="ready-btn">ready</button>
         </footer>
-      </article>`);
+      </article>`;
 window.$acceptOrder = $acceptOrder;
 
 // const acceptedOrder = order => {
