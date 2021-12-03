@@ -14,4 +14,9 @@ const $rejectedMessageForm = $(`
 </div>
 
   `);
+
+$rejectedMessageForm.find('button').on("click", function(e) {
+  e.preventDefault();
+  console.log("hi");
+});
 window.$rejectedMessageForm = $rejectedMessageForm;

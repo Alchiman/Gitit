@@ -1,7 +1,7 @@
 const createAdminMenuItem = (item) => {
   const { description, img_url, name, price, tag } = item;
   return $(`
-  <div class="card card--hover">
+  <article class="card card--hover">
     <div class="delete-button"><i class="fas fa-times-circle"></i></div>
     <div style="background-image: url('${img_url}');" class="card__image">
     </div>
@@ -13,6 +13,6 @@ const createAdminMenuItem = (item) => {
     <div class="card__footer">
       <button>Edit</button>
     </div>
- </div>
+ </article>
   `);
 };

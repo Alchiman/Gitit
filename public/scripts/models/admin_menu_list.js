@@ -19,6 +19,15 @@ $(() => {
     for (const item in items) {
       const menuItem = createAdminMenuItem(items[item]);
       $adminMenuList.append(menuItem);
+      $adminMenuList.find('article').filter(':last').find(".delete-button").on("click", function() {
+        itemManager.selectedItem = $(this)
+          .parent()
+          .parent()
+          .find("p")[0].innerText;
+        console.log(itemManager.selectedItem);
+        console.log("and its me");
+        views_manager.overlay("itemDeletePopup");
+      });
     }
   };
 
@@ -28,15 +37,6 @@ $(() => {
     return getAllMenuItems().then(function(json) {
       adminMenuItems.adminAddMenuItems(json);
       views_manager.render("adminMenuList");
-
-      $(".delete-button").on("click", function() {
-        itemManager.selectedItem = $(this)
-          .parent()
-          .parent()
-          .find("p")[0].innerText;
-        console.log(itemManager.selectedItem);
-        views_manager.overlay("itemDeletePopup");
-      });
 
       $(".card__footer button").on("click", function() {
         views_manager.overlay("itemEditPopup");
