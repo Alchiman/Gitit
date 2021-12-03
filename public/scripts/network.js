@@ -40,7 +40,15 @@ function acceptOrder(status, orderNo) {
   });
 }
 
+function getOrderCount() {
+  let url = "/admins/orders/count";
+  return $.ajax({
+    url
+  });
+}
+
 function cancelOrder(orderNo) {
+  console.log("cancel order is", orderNo);
   return $.ajax({
     method: "POST",
     url: "/users/orders/cancel",

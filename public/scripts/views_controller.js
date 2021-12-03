@@ -28,6 +28,9 @@ $(() => {
       case 'createItemForm':
         $createItemForm.appendTo($main);
         break;
+      case 'orderReadyPopup':
+        $orderReadyPopup.appendTo($main);
+        break;
       case 'error': {
         const $error = $(`<p>${arguments[1]}</p>`);
         $error.appendTo('body');
@@ -78,7 +81,7 @@ $(() => {
     $itemDeletePopup.detach();
     $itemEditPopup.detach();
     $createItemForm.detach();
-
+    $orderReadyPopup.detach();
     switch (component) {
       case 'menuList':
         $menuList.appendTo($main);
@@ -122,8 +125,8 @@ $(() => {
       case 'itemEditPopup':
         $itemEditPopup.appendTo($main);
         break;
-      case 'createItemForm':
-        $createItemForm.appendTo($main);
+      case 'orderReadyPopup':
+        $orderReadyPopup.appendTo($main);
         break;
       case 'error': {
         const $error = $(`<p>${arguments[1]}</p>`);

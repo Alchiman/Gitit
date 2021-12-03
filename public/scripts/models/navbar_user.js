@@ -20,13 +20,15 @@ $(() => {
     } else {
       let receipt = createReceipt();
       if (receipt) {
-        let dataObject = { orderCount: 1, itemList: window.orderSummary.cart };
-        createOrder(dataObject).then(function(json) {
-          console.log(json);
-          views_manager.render('orderSummary');
-          //do bottom code when they press placeholder button
-          // window.orderSummary.cart = {};
-          // $("nav p").text(0);
+        getOrderCount().then((count) => {
+          let dataObject = { orderCount: count.data.count, itemList: window.orderSummary.cart };
+          createOrder(dataObject).then(function(json) {
+            console.log(json);
+            views_manager.render('orderSummary');
+            //do bottom code when they press placeholder button
+            // window.orderSummary.cart = {};
+            // $("nav p").text(0);
+          });
         });
       } else {
         return false;

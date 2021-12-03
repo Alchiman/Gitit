@@ -19,13 +19,15 @@ $(() => {
     for (const item in items) {
       const menuItem = createAdminMenuItem(items[item]);
       $adminMenuList.append(menuItem);
+      // console.log($adminMenuList.find('article')
+      //   .filter(':last')
+      //   .find('p')
+      //   .filter(':first')[0].innerText);
       $adminMenuList.find('article').filter(':last').find(".delete-button").on("click", function() {
         itemManager.selectedItem = $(this)
           .parent()
           .parent()
           .find("p")[0].innerText;
-        console.log(itemManager.selectedItem);
-        console.log("and its me");
         views_manager.overlay("itemDeletePopup");
       });
     }
