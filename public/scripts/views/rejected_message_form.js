@@ -17,14 +17,13 @@ const $rejectedMessageForm = $(`
 
 $rejectedMessageForm.find('button').on("click", function(e) {
   e.preventDefault();
-  console.log(window.activeOrder);
-  cancelOrder(window.activeOrder);
-  // cancelOrder(window.activeOrder).then(() => {
-  //   return getAdminPendingAcceptedOrders();
-  // })
-  //   .then((data) => {
-  //     pendingOrders.addOrderItems(data.items);
-  //     views_manager.render('pendingOrders');
-  //   });
+  rejectOrder('rejected', window.activeOrder).then(() => {
+    sendCustomerSms(3, $rejectedMessageForm.find('textarea').val());
+    return getAdminPendingAcceptedOrders();
+  })
+    .then((data) => {
+      pendingOrders.addOrderItems(data.items);
+      views_manager.render('pendingOrders');
+    });
 });
 window.$rejectedMessageForm = $rejectedMessageForm;

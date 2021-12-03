@@ -34,6 +34,13 @@
     font-size: $fs-400;
     cursor: pointer;
 
+    i {
+      padding-right: .3rem;
+    }
+
+    p {
+      padding-left: .5rem;
+    }
     @include landscape {
       font-size: 1.7rem;
     }

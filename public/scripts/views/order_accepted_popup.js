@@ -15,21 +15,9 @@ $orderAcceptedPopup.find('button').on("click", function(e) {
     return getAdminPendingAcceptedOrders();
   })
     .then((data) => {
+      sendCustomerSms(3, $orderAcceptedPopup.find('textarea').val()); // change from 3 to 1 to send to customer
       pendingOrders.addOrderItems(data.items);
       views_manager.render('pendingOrders');
     });
 });
 window.$orderAcceptedPopup = $orderAcceptedPopup;
-
-
-// $rejectedMessageForm.find('button').on("click", function(e) {
-//   e.preventDefault();
-//   console.log('i am about to cancel: ', window.activeOrder);
-//   cancelOrder(window.activeOrder).then(() => {
-//     return getAdminPendingAcceptedOrders();
-//   })
-//     .then((data) => {
-//       pendingOrders.addOrderItems(data.items);
-//       views_manager.render('pendingOrders');
-//     });
-// });

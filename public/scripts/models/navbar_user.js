@@ -71,7 +71,10 @@ $(() => {
       console.log(json);
       views_manager.navBarRender('navBarAdmin');
       $('#admin-dropdown .dropbtn span').html('Ivan');
-      views_manager.render('adminMenuList');
+      getAdminPendingAcceptedOrders().then((data) => {
+        pendingOrders.addOrderItems(data.items);
+        views_manager.render('pendingOrders');
+      });
     });
   });
 
