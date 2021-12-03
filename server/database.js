@@ -152,6 +152,7 @@ const getUserPendingAcceptedOrder = function(userId) {
 exports.getUserPendingAcceptedOrder = getUserPendingAcceptedOrder;
 
 const cancelOrder = function(order_no) {
+  console.log('this is db order no', order_no);
   return db
     .query(
       `UPDATE orders

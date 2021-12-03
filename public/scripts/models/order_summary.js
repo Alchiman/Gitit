@@ -72,31 +72,4 @@ $(() => {
 
   orderSummary.createItemReceipt = createItemReceipt;
 
-  // const clearMenu = () => {
-  //   $menuList.empty();
-  // };
-
-  // window.menuItems.clearMenu = clearMenu;
-
-  //not enough time to figure out how to dynamically make drop down numbers
-  //use this to do it when have time
-  // <tr>
-  //     <td>
-  //       <p>${name}</p>
-  //     </td>
-  //     <td>
-  //       <select>
-  //         <option value="">0</option>
-  //         <option value="">1</option>
-  //         <option value="">2</option>
-  //         <option selected="selected" value="">3</option>
-  //         <option value="">4</option>
-  //         <option value="">5</option>
-  //       </select>
-  //     </td>
-  //     <td>
-  //       <p>$22.00</p>
-  //     </td>
-  //   </tr>
-
 });

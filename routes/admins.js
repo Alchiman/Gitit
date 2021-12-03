@@ -73,6 +73,17 @@ module.exports = db => {
     }
   });
 
+  router.get("/orders/count", (req, res) => {
+    db.getOrderCount()
+      .then(data => {
+        res.json({ data });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+
   router.post("/menus/create", (req, res) => {
     if (req.session.isAdmin) {
       const { name, price, description, img_url, tag } = req.body;

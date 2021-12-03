@@ -104,7 +104,9 @@ module.exports = db => {
 
   // user cancels order
   router.post("/orders/cancel", (req, res) => {
-    const orderNumber = req.body.order_number;
+    console.log(req.body.order_no);
+    const orderNumber = req.body.order_no;
+    console.log('no from users route', orderNumber);
     db.cancelOrder(orderNumber)
       .then(data => {
         return res.json({ data });

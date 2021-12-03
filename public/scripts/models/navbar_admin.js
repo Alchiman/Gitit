@@ -18,9 +18,9 @@ $(() => {
     } else if ($(this).text() === 'Menu') {
       views_manager.render('adminMenuList');
     } else if ($(this).text() === 'History') {
-      getAdminHistory().then((data) => {
+      adminOrderHistory().then((data) => {
         console.log(data.items);
-        adminHistory.addHistoryItems(data.items);
+        // adminHistory.addHistoryItems(data.items);
       });
       views_manager.render('adminHistory');
     } else if ($(this).text() === 'Orders') {

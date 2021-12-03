@@ -16,7 +16,7 @@ $(() => {
     clearMenu();
     console.log('inside add orderItems: ', orders);
     for (const order in orders) {
-      const { order_number,
+      const { status, order_number,
         date_created,
         user_name,
         user_phone } = orders[order][0];
@@ -39,23 +39,53 @@ $(() => {
       for (const item of orders[order]) {
         $pendingOrders.find('table').filter(':last').append(createPendingOrders(item));
       }
-      $pendingOrders.find('article').filter(':last').append(`
+      if (status !== 'accepted') {
+        $pendingOrders.find('article').filter(':last').append(`
         </table>
 
         <footer>
-          <button>accept</button>
-          <button>rejected</button>
+          <button>Accept</button>
+          <button>Reject</button>
         </footer>
-      </article>
+        </article>
       `);
+      } else if (status === 'accepted') {
+        $pendingOrders.find('article').filter(':last').append(`
+        </table>
 
-      $pendingOrders.find('footer').filter(':last').find('button').filter(':first').on("click", function() {
-        views_manager.overlay("orderAcceptedPopup");
-      });
-      $pendingOrders.find('footer').filter(':last').find('button').filter(':last').on("click", function() {
-        views_manager.overlay("rejectedMessageForm");
-        // window.currentOrder = 1; WORK ON THIS AFTER FIXING OTHER THING.
-      });
+        <footer>
+          <button>FULFILL</button>
+        </footer>
+        </article>
+        `);
+      }
+      //THIS IS ALL BUTTON LISTENERS
+      if (status === 'accepted') {
+        $pendingOrders.find('footer').filter(':last').find('button').filter(':first').on("click", function() {
+          views_manager.overlay("orderReadyPopup");
+          window.activeOrder = order_number;
+          console.log(window.activeOrder);
+          window.myTimeout = setTimeout(() => {
+            fulfillOrder(window.activeOrder).then(() => {
+              return getAdminPendingAcceptedOrders();
+            })
+              .then((data) => {
+                pendingOrders.addOrderItems(data.items);
+                views_manager.render('pendingOrders');
+              });
+          }, 3000);
+        });
+      } else {
+        $pendingOrders.find('footer').filter(':last').find('button').filter(':first').on("click", function() {
+          views_manager.overlay("orderAcceptedPopup");
+          window.activeOrder = order_number;
+          console.log(window.activeOrder);
+        });
+        $pendingOrders.find('footer').filter(':last').find('button').filter(':last').on("click", function() {
+          views_manager.overlay("rejectedMessageForm");
+          window.activeOrder = order_number;
+        });
+      }
     }
   };
 

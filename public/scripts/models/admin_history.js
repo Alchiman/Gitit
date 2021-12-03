@@ -16,9 +16,9 @@ $(() => {
 
   const addHistoryItems = (histories) => {
     clearMenu();
-    histories.forEach(history => {
-      console.log(history);
-    });
+    // histories.forEach(history => {
+    //   console.log(history);
+    // });
   };
 
   window.adminHistory.addHistoryItems = addHistoryItems;
