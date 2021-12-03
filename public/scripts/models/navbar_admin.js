@@ -20,7 +20,8 @@ $(() => {
     } else if ($(this).text() === 'History') {
       adminOrderHistory().then((data) => {
         console.log(data.items);
-        // adminHistory.addHistoryItems(data.items);
+        adminHistory.addHistoryItems(data.items);
+        views_manager.render('adminHistory');
       });
       views_manager.render('adminHistory');
     } else if ($(this).text() === 'Orders') {
