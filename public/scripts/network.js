@@ -13,10 +13,14 @@ function getAllMenuItems() {
 //   });
 // }
 
-function sendCustomerSms() {
+function sendCustomerSms(phone, message) {
+  let data = { phone, message };
   return $.ajax({
     method: "POST",
-    url: "/api/sms"
+    url: "/api/sms",
+    data: JSON.stringify(data),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
   });
 }
 function getAdminPendingAcceptedOrders() {

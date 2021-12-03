@@ -72,4 +72,11 @@ $(() => {
 
   orderSummary.createItemReceipt = createItemReceipt;
 
+  $orderSummary.find('#orders-button').on("click", function() {
+    const message = "You order has been placed, the restuaurant owner will notify you of your estimated pick up time in a short moment.";
+    sendCustomerSms(3, message);
+    setTimeout(() => {
+      views_manager.render('orderReceipt');
+    }, 1000);
+  });
 });
