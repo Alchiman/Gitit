@@ -32,6 +32,12 @@ function adminOrderHistory() {
   });
 }
 
+function userOrderHistory(user_id) {
+  return $.ajax({
+    method: "GET"
+  });
+}
+
 function acceptOrder(status, orderNo) {
   return $.ajax({
     method: "POST",
@@ -149,13 +155,13 @@ function getUserInfo() {
   });
 }
 
-function getUserPendingAcceptedOrder(user_id) {
-  return $.ajax({
-    method: "GET",
-    url: "/users/orders",
-    data: { userId: user_id }
-  });
-}
+// function getUserPendingAcceptedOrder(user_id) {
+//   return $.ajax({
+//     method: "GET",
+//     url: "/users/orders",
+//     data: { userId: user_id }
+//   });
+// }
 
 function getItemInfo(item_name) {
   return $.ajax({

@@ -44,7 +44,7 @@ $(() => {
 
   window.orderSummary = {};
   window.orderSummary.cart = {};
-  const addToCart = (itemName) => {
+  const addToCart = itemName => {
     if (orderSummary.cart[itemName]) {
       orderSummary.cart[itemName] = orderSummary.cart[itemName] + 1;
     } else {
@@ -54,17 +54,28 @@ $(() => {
 
   orderSummary.addToCart = addToCart;
 
-  const createItemReceipt = (name, price, quantity) => {
+  const createItemReceipt = (item, name, price, quantity) => {
     return $(`
       <tr>
       <td>
         <p>${name}</p>
       </td>
       <td>
-        ${quantity}
+      <select id="qty-${item}">
+      ${new Array(Math.max(quantity + 1, 11))
+        .fill(null)
+        .map(
+          (_, index) =>
+            `<option ${
+              Number(quantity) === index ? "selected" : ""
+            }>${index}</option>`
+        )
+        .join("")}
+
+        </select>
       </td>
       <td>
-        <p>$${price}</p>
+        <p id="price-${item}">$${price}</p>
       </td>
     </tr>
     `);
@@ -98,5 +109,4 @@ $(() => {
   //       <p>$22.00</p>
   //     </td>
   //   </tr>
-
 });
