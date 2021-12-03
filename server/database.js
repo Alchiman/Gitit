@@ -109,7 +109,15 @@ const getPendingAcceptedOrders = function() {
       WHERE status = 'pending' OR status = 'accepted' ORDER BY status DESC, date_created ;`
     )
     .then(result => {
-      return result.rows;
+      let orders = {};
+      for (const order of result.rows) {
+        if (!orders[order.id]) {
+          orders[order.id] = [order];
+        } else {
+          orders[order.id].push(order);
+        }
+      }
+      return orders;
     })
     .catch(err => console.log(err.message));
 };
@@ -210,6 +218,7 @@ const getOrderCount = function() {
 exports.getOrderCount = getOrderCount;
 
 const createOrder = function(user_id, order_count) {
+  console.log('userid', user_id);
   const date = new Date();
   let order_no = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
     .toISOString()

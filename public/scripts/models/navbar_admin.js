@@ -14,7 +14,11 @@ $(() => {
     } else if ($(this).text() === 'History') {
       views_manager.render('adminHistory');
     } else if ($(this).text() === 'Orders') {
-      views_manager.render('pendingOrders');
+      getAdminPendingAcceptedOrders().then((data) => {
+        // console.log(data.items);
+        pendingOrders.addOrderItems(data.items);
+        views_manager.render('pendingOrders');
+      });
     }
 
     active.removeClass('js-active');

@@ -72,7 +72,8 @@ module.exports = db => {
 
   // user palces and order
   router.post("/orders", (req, res) => {
-    const { userId } = req.session.userId;
+    const { userId } = req.session;
+    console.log("userid from cookie", userId);
     const { orderCount, itemList } = req.body;
     console.log("itemList", itemList);
     db.createOrder(userId, orderCount)
