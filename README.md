@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="./public/images/Gitit-logos_black.png">
-    <img src="docs/logo-ivan.png" alt="Logo" width="130" height="80">
+  <a href="https://github.com/tangivan/Gitit">
+    <img src="public/images/gitit-logo.png" alt="Logo" width="130" height="80">
   </a>
 
   <h3 align="center">Gitit</h3>
@@ -44,9 +44,12 @@ Gitit is a Node SPA that allows customers to order food for pickup in advance, a
 
 ## Demo Screenshots
 
-<p align="center">
-<!-- ![Gitit-demo](https://github.com/tangivan/auditime-firebase/blob/main/public/media/auditime-github-gif.gif)   -->
-</p>
+Customer making an order
+![Gitit-demo-order](https://github.com/tangivan/Gitit/blob/master/public/gifs/Gitit_order.gif)
+Restaurant Owner fulfilling an order
+![Gitit-demo-fulfill](https://github.com/tangivan/Gitit/blob/master/public/gifs/Gitit_fulfill.gif)
+Restaurant owner deleting a menu item
+![Gitit-demo-delete](https://github.com/tangivan/Gitit/blob/master/public/gifs/Gitit_delete.gif)
 <br />
 
 ### Dependencies
