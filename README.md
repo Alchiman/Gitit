@@ -31,9 +31,6 @@
     <li>
     <a href="#getting-started">Getting Started</a>
     </li>
-    <li>
-    <a href="#testing">Testing</a>
-    </li>
   </ul>
 </details>
 
@@ -82,25 +79,6 @@ Restaurant owner deleting a menu item
   <br/>
 
 # Getting Started
-
-1. Clone this repository onto your local device.
-2. Install dependencies using the `npm install` command.
-3. Set up your `.env.development` and `.env.test` files in the root of the repository with the following template:
-
-```
-REACT_APP_WEBSOCKET_URL=
-PORT=
-CHOKIDAR_USEPOLLING=false
-```
-
-4. Start the client using the `npm run start` command.
-5. Start the api server (not from this repository) using the `npm run start` command.
-6. Start the api server (not from this repository) in error mode with `npm run test` command.
-   <br/>
-
-=========
-
-## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
 2. Update the .env file with your correct local information
