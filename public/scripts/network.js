@@ -91,7 +91,7 @@ function rejectOrder(status, orderNo) {
 function updateUserInfo(name, email, phone) {
   return $.ajax({
     method: "POST",
-    url: 'users/profile/edit',
+    url: "users/profile/edit",
     data: { name: name, email: email, phone: phone }
   });
 }

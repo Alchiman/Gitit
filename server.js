@@ -9,13 +9,15 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const cookieSession = require('cookie-session');
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1']
-}));
+const cookieSession = require("cookie-session");
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1"],
+  })
+);
 
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -31,12 +33,11 @@ app.use(
   sassMiddleware({
     source: __dirname + "/styles",
     destination: __dirname + "/public/styles",
-    isSass: false // false => scss, true => sass
+    isSass: false, // false => scss, true => sass
   })
 );
 
 app.use(express.static("public"));
-
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -56,7 +57,7 @@ app.use("/admins", adminsRoutes(database));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.status(200).send({ sucess: true });
 });
 
 app.listen(PORT, () => {
