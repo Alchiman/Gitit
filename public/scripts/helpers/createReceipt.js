@@ -1,6 +1,5 @@
 const createReceipt = () => {
-  if (!Object.keys(window.orderSummary.cart).length)
-    return false;
+  if (!Object.keys(window.orderSummary.cart).length) return false;
 
   if (!window.orderSummary.receiptMade) {
     let cartItems = window.orderSummary.cart;

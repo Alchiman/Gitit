@@ -1,5 +1,5 @@
 const $navbar_admin = $(`
-  <img class="navbar__logo" src="./images/gitit-logo.png" alt="logo">
+<img class="navbar__logo" src="./images/Gitit-logos_white.png" alt="logo">
     <span class="navbar__item">Profile</span>
     <span class="navbar__item">Menu</span>
     <span class="navbar__item">Orders</span>

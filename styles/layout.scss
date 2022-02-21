@@ -14,4 +14,7 @@ h3 {
 body {
   font-size: $fs-400;
   background-color: $background;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

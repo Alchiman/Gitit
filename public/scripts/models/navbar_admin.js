@@ -26,7 +26,6 @@ $(() => {
       views_manager.render('adminHistory');
     } else if ($(this).text() === 'Orders') {
       getAdminPendingAcceptedOrders().then((data) => {
-        // console.log(data.items);
         pendingOrders.addOrderItems(data.items);
         views_manager.render('pendingOrders');
       });

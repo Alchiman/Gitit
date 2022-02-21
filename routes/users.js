@@ -60,16 +60,16 @@ module.exports = db => {
       });
   });
   // get request for user order history
-  router.get("/orders", (req, res) => {
-    const userId = req.session.userId;
-    db.userOrderHistory(userId)
-      .then(data => {
-        return res.json({ data });
-      })
-      .catch(err => {
-        res.status(500).json({ error: err.message });
-      });
-  });
+  // router.get("/orders", (req, res) => {
+  //   const userId = req.session.userId;
+  //   db.userOrderHistory(userId)
+  //     .then(data => {
+  //       return res.json({ data });
+  //     })
+  //     .catch(err => {
+  //       res.status(500).json({ error: err.message });
+  //     });
+  // });
 
   // user palces and order
   router.post("/orders", (req, res) => {

@@ -13,10 +13,14 @@ function getAllMenuItems() {
 //   });
 // }
 
-function sendCustomerSms() {
+function sendCustomerSms(phone, message) {
+  let data = { phone, message };
   return $.ajax({
     method: "POST",
-    url: "/api/sms"
+    url: "/api/sms",
+    data: JSON.stringify(data),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
   });
 }
 function getAdminPendingAcceptedOrders() {
@@ -157,11 +161,10 @@ function getUserInfo() {
   });
 }
 
-function getUserPendingAcceptedOrder(user_id) {
+function getUserPendingAcceptedOrder() {
   return $.ajax({
     method: "GET",
-    url: "/users/orders",
-    data: { userId: user_id }
+    url: "/users/orders"
   });
 }
 

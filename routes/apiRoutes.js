@@ -16,8 +16,8 @@ module.exports = db => {
   });
 
   router.post("/sms", (req, res) => {
-    console.log(req.session.userId);
-    sendSms()
+    const { phone, message } = req.body;
+    sendSms(phone, message)
       .then(data => {
         return res.send(data);
       })
